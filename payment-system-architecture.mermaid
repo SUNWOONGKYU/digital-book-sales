@@ -1,0 +1,44 @@
+graph TB
+    subgraph "고객 영역"
+        A[고객] -->|1. 접속| B[Landing Page<br/>vercel.app]
+        B -->|2. 구매 버튼 클릭| C[토스페이먼츠<br/>결제창]
+        C -->|3. 결제 정보 입력| D[카드/계좌 결제]
+        D -->|4. 결제 승인| C
+    end
+
+    subgraph "Vercel 서버"
+        C -->|5. 결제 성공 리다이렉트| E[Success Page]
+        E -->|6. 결제 확인 요청| F[Serverless Function<br/>confirm-payment.js]
+        
+        F -->|7. 결제 승인 요청| G[토스페이먼츠 API]
+        G -->|8. 승인 완료| F
+        
+        F -->|9. PDF 링크 생성| H[Google Drive<br/>공유 링크]
+        
+        F -->|10. 이메일 발송| I[Gmail SMTP<br/>또는 SendGrid]
+    end
+
+    subgraph "외부 서비스"
+        G
+        H
+        I
+    end
+
+    I -->|11. PDF 다운로드 링크<br/>+ GitHub 링크| A
+    
+    F -->|12. 구매 정보 저장| J[(데이터베이스<br/>선택사항)]
+
+    style A fill:#e1f5ff
+    style B fill:#fff4e1
+    style C fill:#ffe1e1
+    style E fill:#e1ffe1
+    style F fill:#f0e1ff
+    style G fill:#ffe1f0
+    style H fill:#e1fff0
+    style I fill:#f0ffe1
+    style J fill:#e1e1ff
+
+    classDef customer fill:#e1f5ff,stroke:#333,stroke-width:2px
+    classDef vercel fill:#fff4e1,stroke:#333,stroke-width:2px
+    classDef payment fill:#ffe1e1,stroke:#333,stroke-width:2px
+    classDef email fill:#f0ffe1,stroke:#333,stroke-width:2px

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제 성공!</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 600px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .icon { font-size: 80px; margin-bottom: 20px; }
+        h1 { color: #27ae60; margin-bottom: 20px; font-size: 32px; }
+        .message {
+            color: #546E7A;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .info-box p {
+            margin: 10px 0;
+            color: #2C3E50;
+        }
+        .info-box strong {
+            color: #667eea;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #status { font-size: 14px; color: #7f8c8d; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">✅</div>
+        <h1>결제가 완료되었습니다!</h1>
+        <div class="message">
+            결제 확인 및 PDF 발송 중입니다...<br>
+            잠시만 기다려주세요!
+        </div>
+        <div class="spinner"></div>
+        <div id="status">결제 확인 중...</div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentKey = urlParams.get('paymentKey');
+        const orderId = urlParams.get('orderId');
+        const amount = urlParams.get('amount');
+
+        async function confirmPayment() {
+            try {
+                document.getElementById('status').textContent = '결제 승인 요청 중...';
+                
+                const response = await fetch('/api/confirm-payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        paymentKey,
+                        orderId,
+                        amount: parseInt(amount)
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    document.querySelector('.container').innerHTML = `
+                        <div class="icon">🎉</div>
+                        <h1>구매 완료!</h1>
+                        <div class="message">
+                            PDF가 이메일로 발송되었습니다!<br>
+                            <strong>${result.email}</strong>로 확인해주세요.
+                        </div>
+                        <div class="info-box">
+                            <p><strong>주문번호:</strong> ${orderId}</p>
+                            <p><strong>결제금액:</strong> ₩${amount.toLocaleString()}</p>
+                            <p><strong>이메일:</strong> ${result.email}</p>
+                        </div>
+                        <div style="color: #7f8c8d; font-size: 14px; margin-top: 20px;">
+                            이메일이 오지 않았다면 스팸함을 확인해주세요!
+                        </div>
+                    `;
+                } else {
+                    throw new Error(result.message || '결제 확인 실패');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.querySelector('.container').innerHTML = `
+                    <div class="icon">❌</div>
+                    <h1 style="color: #e74c3c;">오류 발생</h1>
+                    <div class="message">
+                        결제는 완료되었으나 PDF 발송 중 오류가 발생했습니다.<br>
+                        카카오톡 채널로 문의해주세요.
+                    </div>
+                    <div class="info-box">
+                        <p><strong>주문번호:</strong> ${orderId}</p>
+                        <p><strong>오류:</strong> ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        confirmPayment();
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+sequenceDiagram
+    participant 고객
+    participant Landing페이지
+    participant 토스페이먼츠
+    participant Vercel서버
+    participant 토스API
+    participant Gmail
+    participant GoogleDrive
+
+    고객->>Landing페이지: 1. 사이트 접속
+    Landing페이지->>고객: 2. 상품 정보 표시
+    고객->>Landing페이지: 3. [구매하기] 클릭
+    
+    Landing페이지->>토스페이먼츠: 4. 결제 위젯 로드<br/>(clientKey + 금액)
+    토스페이먼츠->>고객: 5. 결제창 표시
+    고객->>토스페이먼츠: 6. 결제 정보 입력<br/>(카드번호/계좌)
+    
+    토스페이먼츠->>토스페이먼츠: 7. 결제 승인 처리
+    토스페이먼츠->>Landing페이지: 8. Success URL로 리다이렉트<br/>(paymentKey, orderId, amount)
+    
+    Landing페이지->>Vercel서버: 9. /api/confirm-payment 호출<br/>(paymentKey, orderId, amount, email)
+    
+    Vercel서버->>토스API: 10. POST /confirm<br/>(결제 최종 승인 요청)
+    토스API->>Vercel서버: 11. 승인 완료 응답
+    
+    Vercel서버->>GoogleDrive: 12. PDF 공유 링크 확인
+    GoogleDrive->>Vercel서버: 13. 다운로드 링크 반환
+    
+    Vercel서버->>Gmail: 14. 이메일 발송<br/>(PDF 링크 + GitHub 링크)
+    Gmail->>고객: 15. 이메일 수신
+    
+    Vercel서버->>Landing페이지: 16. 성공 응답
+    Landing페이지->>고객: 17. 구매 완료 페이지 표시<br/>("이메일을 확인하세요")
+    
+    고객->>Gmail: 18. 이메일 확인
+    고객->>GoogleDrive: 19. PDF 다운로드
+    
+    Note over 고객,GoogleDrive: 전체 프로세스: 약 3-5초
+    Note over Vercel서버: Serverless Function<br/>자동 확장, 비용 절감
+    Note over 토스페이먼츠: 안전한 결제 처리<br/>PCI-DSS 인증

@@ -1,0 +1,12 @@
+{
+  "name": "claude-guide-payment",
+  "version": "1.0.0",
+  "description": "Claude 완벽 가이드 결제 시스템",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  }
+}

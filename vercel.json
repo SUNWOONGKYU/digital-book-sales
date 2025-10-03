@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "env": {
+    "TOSS_SECRET_KEY": "@toss_secret_key",
+    "GMAIL_USER": "@gmail_user",
+    "GMAIL_APP_PASSWORD": "@gmail_app_password",
+    "PDF_DOWNLOAD_LINK": "@pdf_download_link"
+  }
+}

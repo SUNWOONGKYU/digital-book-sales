@@ -1,0 +1,53 @@
+graph LR
+    subgraph "프론트엔드 Layer"
+        A[Landing Page<br/>HTML + CSS + JS]
+        B[Payment Widget<br/>토스페이먼츠 SDK]
+        C[Success/Fail Pages]
+    end
+
+    subgraph "Vercel Platform"
+        D[Static Hosting<br/>CDN 자동 배포]
+        E[Serverless Functions<br/>Node.js API]
+        F[Environment Variables<br/>보안 키 관리]
+    end
+
+    subgraph "결제 처리"
+        G[토스페이먼츠 API<br/>clientKey + secretKey]
+        H[결제 승인<br/>POST /confirm]
+        I[Webhook<br/>선택사항]
+    end
+
+    subgraph "이메일 발송"
+        J[Gmail SMTP<br/>nodemailer]
+        K[SendGrid<br/>대안]
+    end
+
+    subgraph "파일 저장"
+        L[Google Drive<br/>PDF 호스팅]
+        M[GitHub<br/>업데이트 링크]
+    end
+
+    A --> B
+    B --> G
+    G --> H
+    H --> E
+    E --> J
+    E --> K
+    E --> L
+    E --> M
+    E --> C
+    D --> A
+    F --> E
+
+    style A fill:#4A90E2
+    style B fill:#E24A4A
+    style E fill:#9B59B6
+    style G fill:#E74C3C
+    style J fill:#27AE60
+    style L fill:#F39C12
+
+    classDef frontend fill:#4A90E2,stroke:#333,color:#fff
+    classDef backend fill:#9B59B6,stroke:#333,color:#fff
+    classDef payment fill:#E74C3C,stroke:#333,color:#fff
+    classDef email fill:#27AE60,stroke:#333,color:#fff
+    classDef storage fill:#F39C12,stroke:#333,color:#fff

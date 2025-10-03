@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude 완벽 가이드 - 국내 최초 Claude 4종 완전 정복</title>
+    <meta name="description" content="Claude 모바일앱, 웹, 데스크톱앱, Code까지! 국내 최초 Claude 4종 세트 완벽 설치 가이드">
+    <script src="https://js.tosspayments.com/v1/payment-widget"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;900&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* 헤더 섹션 */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        /* 컨테이너 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* 가격 섹션 */
+        .price-section {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .price-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .original-price {
+            font-size: 24px;
+            color: #95a5a6;
+            text-decoration: line-through;
+            margin-bottom: 10px;
+        }
+        
+        .sale-price {
+            font-size: 56px;
+            font-weight: 900;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .discount-badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        /* 특징 섹션 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            color: #2C3E50;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #546E7A;
+            line-height: 1.8;
+        }
+
+        /* 포함 내용 */
+        .contents {
+            background: white;
+            padding: 60px 20px;
+        }
+        
+        .contents h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #2C3E50;
+            margin-bottom: 50px;
+        }
+        
+        .content-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-item {
+            display: flex;
+            align-items: start;
+            padding: 25px;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+        
+        .content-item:hover {
+            background: #e3f2fd;
+            transform: translateX(10px);
+        }
+        
+        .content-item .icon {
+            font-size: 32px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .content-item h4 {
+            font-size: 20px;
+            color: #2C3E50;
+            margin-bottom: 10px;
+        }
+        
+        .content-item p {
+            color: #546E7A;
+            line-height: 1.6;
+        }
+
+        /* 저자 소개 */
+        .author {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .author h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        
+        .author-bio {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+        
+        .author-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .author-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+
+        /* 구매 섹션 */
+        .purchase {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+        
+        .purchase-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .purchase h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2C3E50;
+            margin-bottom: 40px;
+        }
+        
+        .input-group {
+            margin-bottom: 30px;
+        }
+        
+        .input-group label {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 12px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .purchase-button {
+            width: 100%;
+            padding: 22px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .purchase-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+        }
+        
+        .purchase-button:active {
+            transform: translateY(0);
+        }
+
+        /* 신뢰 배지 */
+        .trust {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+        
+        .trust-item {
+            text-align: center;
+        }
+        
+        .trust-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .trust-text {
+            color: #546E7A;
+            font-size: 14px;
+        }
+
+        /* FAQ */
+        .faq {
+            background: white;
+            padding: 60px 20px;
+        }
+        
+        .faq h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #2C3E50;
+            margin-bottom: 50px;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 25px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+        }
+        
+        .faq-question {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2C3E50;
+            margin-bottom: 12px;
+        }
+        
+        .faq-answer {
+            color: #546E7A;
+            line-height: 1.8;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero .subtitle { font-size: 18px; }
+            .sale-price { font-size: 42px; }
+            .purchase-box { padding: 30px 20px; }
+        }
+
+        /* 스크롤 애니메이션 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <h1>🤖 Claude 완벽 가이드</h1>
+        <p class="subtitle">국내 최초! Claude 4종 세트 완전 정복</p>
+        <div>
+            <span class="badge">⚡ 즉시 다운로드</span>
+            <span class="badge">📱 모든 기기 지원</span>
+            <span class="badge">💯 실전 노하우</span>
+        </div>
+    </section>
+
+    <!-- 특징 섹션 -->
+    <section class="container">
+        <div class="features fade-in">
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>4종 완벽 커버</h3>
+                <p>모바일앱, 웹, 데스크톱앱, Claude Code까지 모든 Claude 사용법을 한 권에!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h3>토큰 절약 노하우</h3>
+                <p>5개월간의 실제 사용 경험에서 나온 실전 토큰 절약 꿀팁 대공개!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3>단계별 상세 가이드</h3>
+                <p>초보자도 쉽게 따라할 수 있는 스크린샷 포함 단계별 설명!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 포함 내용 -->
+    <section class="contents fade-in">
+        <div class="container">
+            <h2>📚 가이드에 포함된 내용</h2>
+            <div class="content-list">
+                <div class="content-item">
+                    <div class="icon">📱</div>
+                    <div>
+                        <h4>Claude 모바일앱</h4>
+                        <p>iOS/Android 앱 설치부터 핵심 기능까지 완벽 가이드</p>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <div class="icon">🌐</div>
+                    <div>
+                        <h4>Claude 웹 버전</h4>
+                        <p>브라우저에서 Claude 200% 활용하는 법</p>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <div class="icon">💻</div>
+                    <div>
+                        <h4>Claude 데스크톱앱</h4>
+                        <p>Windows/Mac 데스크톱 앱 설치 & 활용 가이드</p>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <div class="icon">👨‍💻</div>
+                    <div>
+                        <h4>Claude Code</h4>
+                        <p>개발자를 위한 Claude Code 완전 정복 (설치부터 실전까지)</p>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <div class="icon">💰</div>
+                    <div>
+                        <h4>토큰 절약 노하우</h4>
+                        <p>실제 사용하며 터득한 토큰 아끼는 10가지 방법</p>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <div class="icon">🚀</div>
+                    <div>
+                        <h4>Anthropic 스토리</h4>
+                        <p>OpenAI를 뛰어넘은 Anthropic의 성장 스토리</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 저자 소개 -->
+    <section class="author fade-in">
+        <h2>✍️ 저자 소개</h2>
+        <div class="author-bio">
+            <p><strong>써니(선웅규)</strong></p>
+            <p style="margin-top: 20px;">
+                현직 공인회계사이자 스타트업 엑셀러레이터가 5개월간 Claude를 실제로 사용하며 축적한 모든 노하우를 담았습니다.
+            </p>
+            <div class="author-badges">
+                <span class="author-badge">🎓 공인회계사</span>
+                <span class="author-badge">🚀 스타트업 엑셀러레이터</span>
+                <span class="author-badge">💻 AI 실전 활용 전문가</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 가격 섹션 -->
+    <section class="price-section fade-in">
+        <div class="container">
+            <h2 style="font-size: 36px; color: #2C3E50; margin-bottom: 40px;">💰 특별 할인 가격</h2>
+            <div class="price-box">
+                <div class="original-price">정가 ₩19,900</div>
+                <div class="discount-badge">50% 할인!</div>
+                <div class="sale-price">₩9,990</div>
+                <p style="color: #546E7A; font-size: 16px;">
+                    ⏰ 얼리버드 특가! 지금 구매하시면 50% 할인된 가격으로 제공됩니다!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 구매 섹션 -->
+    <section class="purchase fade-in" id="purchase">
+        <div class="purchase-box">
+            <h2>🎯 지금 바로 시작하세요!</h2>
+            <div class="input-group">
+                <label for="email">📧 이메일 주소</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="PDF를 받을 이메일 주소를 입력하세요"
+                    required
+                >
+            </div>
+            <button class="purchase-button" id="payment-button">
+                ₩9,990 결제하고 즉시 다운로드
+            </button>
+            
+            <div class="trust">
+                <div class="trust-item">
+                    <div class="trust-icon">🔒</div>
+                    <div class="trust-text">안전한 결제<br>토스페이먼츠</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">⚡</div>
+                    <div class="trust-text">즉시 발송<br>이메일 자동 전송</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">💯</div>
+                    <div class="trust-text">7일 환불<br>100% 보장</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq fade-in">
+        <div class="container">
+            <h2>❓ 자주 묻는 질문</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Q. 결제 후 바로 받을 수 있나요?</div>
+                    <div class="faq-answer">A. 네! 결제 완료 즉시 입력하신 이메일로 PDF가 자동 발송됩니다. (보통 1분 이내)</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q. 환불이 가능한가요?</div>
+                    <div class="faq-answer">A. 구매 후 7일 이내 100% 환불 가능합니다. 카카오톡 채널로 문의주세요.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q. 초보자도 따라할 수 있나요?</div>
+                    <div class="faq-answer">A. 물론입니다! 스크린샷과 함께 단계별로 자세히 설명되어 있어 누구나 쉽게 따라하실 수 있습니다.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q. 업데이트가 있나요?</div>
+                    <div class="faq-answer">A. Claude가 업데이트되면 가이드도 함께 업데이트되며, 구매자분들께 무료로 새 버전을 보내드립니다!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q. 문의는 어떻게 하나요?</div>
+                    <div class="faq-answer">A. 카카오톡 채널 [@claude]로 언제든 문의주세요. 빠르게 답변드리겠습니다!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 토스페이먼츠 설정
+        const clientKey = 'test_gck_docs_OaPz8L5KdmQXkzRz3y47BMw6'; // 실제 사용 시 변경 필요!
+        const customerKey = 'customer_' + Date.now();
+        const paymentWidget = PaymentWidget(clientKey, customerKey);
+
+        // 결제 버튼 클릭
+        document.getElementById('payment-button').addEventListener('click', async () => {
+            const email = document.getElementById('email').value.trim();
+            
+            if (!email) {
+                alert('📧 이메일 주소를 입력해주세요!');
+                document.getElementById('email').focus();
+                return;
+            }
+            
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('📧 올바른 이메일 주소를 입력해주세요!');
+                document.getElementById('email').focus();
+                return;
+            }
+
+            try {
+                await paymentWidget.requestPayment({
+                    method: "CARD",
+                    amount: {
+                        currency: "KRW",
+                        value: 9990,
+                    },
+                    orderId: 'ORDER_' + Date.now(),
+                    orderName: 'Claude 완벽 가이드',
+                    customerEmail: email,
+                    successUrl: window.location.origin + '/success.html',
+                    failUrl: window.location.origin + '/fail.html',
+                });
+            } catch (error) {
+                console.error('결제 오류:', error);
+                alert('❌ 결제 중 오류가 발생했습니다. 다시 시도해주세요.\n\n오류가 계속되면 카카오톡 채널로 문의해주세요!');
+            }
+        });
+
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // 이메일 입력 시 엔터키로 결제
+        document.getElementById('email').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('payment-button').click();
+            }
+        });
+    </script>
+</body>
+</html>
