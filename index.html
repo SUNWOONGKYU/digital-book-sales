@@ -78,11 +78,6 @@
             margin-bottom: 10px;
         }
 
-        .price small {
-            font-size: 24px;
-            font-weight: 400;
-        }
-
         .price-note {
             color: #666;
             font-size: 14px;
@@ -127,66 +122,166 @@
             line-height: 1.5;
         }
 
-        .cta-section {
-            text-align: center;
+        /* 카카오페이 섹션 */
+        .kakaopay-section {
+            background: linear-gradient(135deg, #FEE500 0%, #FFEB3B 100%);
+            border: 3px solid #F9D700;
+            border-radius: 20px;
+            padding: 50px 40px;
             margin: 40px 0;
-            padding: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
-            color: white;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(254, 229, 0, 0.3);
         }
 
-        .cta-button {
+        .kakaopay-button {
             display: inline-block;
-            background: white;
-            color: #667eea;
+            background: #3C1E1E;
+            color: #FEE500;
+            padding: 20px 60px;
+            font-size: 22px;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(60, 30, 30, 0.3);
+        }
+
+        .kakaopay-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(60, 30, 30, 0.4);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 40px 0;
+            color: #999;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        /* 계좌이체 섹션 */
+        .bank-section {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .bank-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             padding: 18px 50px;
             font-size: 18px;
             font-weight: 700;
-            text-decoration: none;
+            border: none;
             border-radius: 50px;
+            cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .cta-button:hover {
+        .bank-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
-        .payment-info {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            border-radius: 10px;
-            padding: 25px;
-            margin: 30px 0;
-        }
-
-        .payment-info h3 {
-            color: #856404;
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-
         .account-info {
             background: white;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .account-info.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .account-detail {
             margin: 15px 0;
         }
 
-        .account-info p {
-            margin: 8px 0;
-            font-size: 16px;
+        .account-detail label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
         }
 
-        .account-info strong {
+        .account-detail .value {
+            font-size: 20px;
+            font-weight: 700;
             color: #667eea;
-            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .copy-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-button:hover {
+            background: #5568d3;
+        }
+
+        .copy-button.copied {
+            background: #27ae60;
         }
 
         .steps {
-            margin-top: 20px;
+            margin-top: 30px;
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .steps h4 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 16px;
         }
 
         .steps ol {
@@ -196,6 +291,7 @@
         .steps li {
             margin: 8px 0;
             color: #856404;
+            font-size: 14px;
         }
 
         .author {
@@ -240,6 +336,21 @@
             
             .price {
                 font-size: 36px;
+            }
+
+            .kakaopay-section {
+                padding: 40px 20px;
+            }
+
+            .kakaopay-button {
+                padding: 18px 40px;
+                font-size: 18px;
+            }
+
+            .account-detail .value {
+                font-size: 16px;
+                flex-direction: column;
+                gap: 8px;
             }
         }
     </style>
@@ -296,41 +407,58 @@
                 </div>
             </div>
 
-            <div class="cta-section">
-                <h2 style="margin-bottom: 20px;">지금 시작하세요!</h2>
-                <a href="https://qr.kakaopay.com/Ej8qUBxLx" class="cta-button" target="_blank">
+            <!-- 카카오페이 섹션 -->
+            <div class="kakaopay-section">
+                <a href="https://qr.kakaopay.com/Ej8qUBxLx" class="kakaopay-button" target="_blank">
                     카카오페이로 송금하기
                 </a>
-                <p style="margin-top: 20px;">또는</p>
-                <button id="bankTransferBtn" class="cta-button" style="margin-top: 10px; border: none; cursor: pointer;">
-                    계좌이체
-                </button>
-                <div id="accountInfo" style="display: none; margin-top: 20px; background: white; color: #333; padding: 20px; border-radius: 10px;">
-                    <p style="margin-bottom: 10px;"><strong>하나은행 620-241128-571</strong></p>
-                    <p style="margin-bottom: 10px;">예금주: 선웅규</p>
-                    <button id="copyBtn" style="background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
-                        계좌번호 복사
-                    </button>
-                </div>
-                <button class="cta-button" style="margin-top: 10px; border: none; cursor: not-allowed; opacity: 0.6;">
-                    신용카드 (준비 중)
-                </button>
-                <p style="margin-top: 15px; font-size: 14px; opacity: 0.9;">
-                    구매 문의 및 입금 안내는 카카오톡으로!
-                </p>
             </div>
 
-            <div class="payment-info">
-                <h3>💳 구매 방법</h3>
-                <div class="steps">
-                    <p><strong>📌 구매 절차</strong></p>
-                    <ol>
-                        <li>위 버튼을 클릭하여 카카오페이 송금 또는 계좌이체</li>
-                        <li>₩9,990 입금</li>
-                        <li><a href="http://pf.kakao.com/_WqSxcn/chat" target="_blank" style="color: #667eea; text-decoration: underline;">카카오톡 채널</a>로 "입금완료 + 받으실 이메일 주소" 메시지 전송</li>
-                        <li>확인 후 10분 이내 PDF 링크 이메일 발송</li>
-                    </ol>
+            <div class="divider">또는</div>
+
+            <!-- 계좌이체 섹션 -->
+            <div class="bank-section">
+                <button class="bank-button" onclick="toggleAccountInfo()">
+                    🏦 계좌이체
+                </button>
+                
+                <div id="accountInfo" class="account-info">
+                    <div class="account-detail">
+                        <label>은행</label>
+                        <div class="value">하나은행</div>
+                    </div>
+                    <div class="account-detail">
+                        <label>계좌번호</label>
+                        <div class="value">
+                            <span id="accountNumber">620-241128-571</span>
+                            <button class="copy-button" onclick="copyAccountNumber()">
+                                📋 복사
+                            </button>
+                        </div>
+                    </div>
+                    <div class="account-detail">
+                        <label>예금주</label>
+                        <div class="value">선웅규</div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="steps">
+                <h4>📌 구매 후 안내</h4>
+                <ol>
+                    <li>카카오페이 송금 또는 계좌이체 완료</li>
+                    <li>아래 카카오톡 채널로 메시지 전송</li>
+                    <li>"입금완료 + 받으실 이메일 주소" 입력</li>
+                    <li>확인 후 10분 이내 PDF 링크 이메일 발송!</li>
+                </ol>
+            </div>
+
+            <div style="text-align: center; margin: 40px 0;">
+                <a href="http://pf.kakao.com/_WqSxcn/chat" 
+                   style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 18px 50px; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 50px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
+                   target="_blank">
+                    💬 카카오톡 채널로 문의하기
+                </a>
             </div>
 
             <div class="author">
@@ -347,36 +475,33 @@
         <div class="footer">
             <p>Claude 완벽 가이드 | 2025</p>
             <p style="font-size: 12px; margin-top: 10px; opacity: 0.8;">
-                문의: 카카오톡 채널 또는 이메일
+                문의: 카카오톡 채널
             </p>
         </div>
     </div>
 
     <script>
-        // 계좌이체 버튼 클릭 이벤트
-        document.getElementById('bankTransferBtn').addEventListener('click', function() {
+        function toggleAccountInfo() {
             const accountInfo = document.getElementById('accountInfo');
-            if (accountInfo.style.display === 'none') {
-                accountInfo.style.display = 'block';
-            } else {
-                accountInfo.style.display = 'none';
-            }
-        });
+            accountInfo.classList.toggle('show');
+        }
 
-        // 계좌번호 복사 기능
-        document.getElementById('copyBtn').addEventListener('click', function() {
-            const accountNumber = '620-241128-571';
-            navigator.clipboard.writeText(accountNumber).then(function() {
-                const btn = document.getElementById('copyBtn');
-                const originalText = btn.textContent;
-                btn.textContent = '✓ 복사완료!';
-                setTimeout(function() {
-                    btn.textContent = originalText;
+        function copyAccountNumber() {
+            const accountNumber = document.getElementById('accountNumber').textContent;
+            const button = event.target;
+            
+            navigator.clipboard.writeText(accountNumber).then(() => {
+                button.textContent = '✓ 복사완료!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = '📋 복사';
+                    button.classList.remove('copied');
                 }, 2000);
-            }).catch(function(err) {
-                alert('복사 실패: ' + err);
+            }).catch(err => {
+                alert('계좌번호: ' + accountNumber);
             });
-        });
+        }
     </script>
 </body>
 </html>
