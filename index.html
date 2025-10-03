@@ -298,9 +298,20 @@
 
             <div class="cta-section">
                 <h2 style="margin-bottom: 20px;">지금 시작하세요!</h2>
-                <a href="http://pf.kakao.com/_WqSxcn/chat" class="cta-button" target="_blank">
-                    💬 카카오톡으로 구매하기
+                <a href="https://qr.kakaopay.com/Ej8qUBxLx" class="cta-button" target="_blank">
+                    카카오페이로 송금하기
                 </a>
+                <p style="margin-top: 20px;">또는</p>
+                <button id="bankTransferBtn" class="cta-button" style="margin-top: 10px; border: none; cursor: pointer;">
+                    계좌이체
+                </button>
+                <div id="accountInfo" style="display: none; margin-top: 20px; background: white; color: #333; padding: 20px; border-radius: 10px;">
+                    <p style="margin-bottom: 10px;"><strong>하나은행 620-241128-571</strong></p>
+                    <p style="margin-bottom: 10px;">예금주: 선웅규</p>
+                    <button id="copyBtn" style="background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                        계좌번호 복사
+                    </button>
+                </div>
                 <p style="margin-top: 15px; font-size: 14px; opacity: 0.9;">
                     구매 문의 및 입금 안내는 카카오톡으로!
                 </p>
@@ -308,18 +319,12 @@
 
             <div class="payment-info">
                 <h3>💳 구매 방법</h3>
-                <div class="account-info">
-                    <p><strong>입금 계좌</strong></p>
-                    <p>은행: 하나은행</p>
-                    <p>계좌번호: 620-241128-571</p>
-                    <p>예금주: 선웅규</p>
-                </div>
                 <div class="steps">
                     <p><strong>📌 구매 절차</strong></p>
                     <ol>
-                        <li>위 버튼을 클릭하여 카카오톡 채널 접속</li>
-                        <li>안내된 계좌로 ₩9,990 입금</li>
-                        <li>"입금완료 + 받으실 이메일 주소" 메시지 전송</li>
+                        <li>위 버튼을 클릭하여 카카오페이 송금 또는 계좌이체</li>
+                        <li>₩9,990 입금</li>
+                        <li><a href="http://pf.kakao.com/_WqSxcn/chat" target="_blank" style="color: #667eea; text-decoration: underline;">카카오톡 채널</a>로 "입금완료 + 받으실 이메일 주소" 메시지 전송</li>
                         <li>확인 후 10분 이내 PDF 링크 이메일 발송</li>
                     </ol>
                 </div>
@@ -343,5 +348,32 @@
             </p>
         </div>
     </div>
+
+    <script>
+        // 계좌이체 버튼 클릭 이벤트
+        document.getElementById('bankTransferBtn').addEventListener('click', function() {
+            const accountInfo = document.getElementById('accountInfo');
+            if (accountInfo.style.display === 'none') {
+                accountInfo.style.display = 'block';
+            } else {
+                accountInfo.style.display = 'none';
+            }
+        });
+
+        // 계좌번호 복사 기능
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const accountNumber = '620-241128-571';
+            navigator.clipboard.writeText(accountNumber).then(function() {
+                const btn = document.getElementById('copyBtn');
+                const originalText = btn.textContent;
+                btn.textContent = '✓ 복사완료!';
+                setTimeout(function() {
+                    btn.textContent = originalText;
+                }, 2000);
+            }).catch(function(err) {
+                alert('복사 실패: ' + err);
+            });
+        });
+    </script>
 </body>
 </html>
