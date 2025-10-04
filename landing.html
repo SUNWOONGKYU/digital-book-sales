@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claude 완벽 가이드 - 국내 최초 Claude 4종 완전 정복</title>
-    <meta name="description" content="Claude 모바일앱, 웹, 데스크톱앱, Code까지! 국내 최초 Claude 4종 세트 완벽 설치 가이드">
-    <script src="https://js.tosspayments.com/v1/payment-widget"></script>
+    <title>Claude 완벽 가이드 - 5개월 만에 AI 마스터가 된 공인회계사의 실전 노하우</title>
+    <meta name="description" content="10년간 개발자와 씨름하다 실패한 IT 플랫폼, Claude로 5개월 만에 돌파구 발견! 특허출원서 5건, 사업기획서 수십 개 작성. 현직 공인회계사의 Claude 4종(모바일앱/웹/데스크톱앱/Code) 완벽 설치 가이드. 3시간이면 설치 완료!">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;900&display=swap');
         
@@ -222,7 +221,7 @@
             background: #f8f9fa;
             padding: 80px 20px;
         }
-        
+
         .purchase-box {
             max-width: 600px;
             margin: 0 auto;
@@ -231,18 +230,32 @@
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
-        
+
         .purchase h2 {
             text-align: center;
             font-size: 32px;
             color: #2C3E50;
             margin-bottom: 40px;
         }
-        
-        .input-group {
-            margin-bottom: 30px;
+
+        .step {
+            display: none;
         }
-        
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
         .input-group label {
             display: block;
             font-size: 18px;
@@ -250,7 +263,7 @@
             color: #2C3E50;
             margin-bottom: 12px;
         }
-        
+
         .input-group input {
             width: 100%;
             padding: 18px;
@@ -259,32 +272,94 @@
             font-size: 16px;
             transition: border-color 0.3s;
         }
-        
+
         .input-group input:focus {
             outline: none;
             border-color: #667eea;
         }
-        
-        .purchase-button {
+
+        .btn {
             width: 100%;
             padding: 22px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
             border: none;
             border-radius: 12px;
             font-size: 20px;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s;
         }
-        
-        .purchase-button:hover {
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-kakaopay {
+            background: #FEE500;
+            color: #3C1E1E;
+            margin-bottom: 15px;
+        }
+
+        .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        
-        .purchase-button:active {
+
+        .btn:active {
             transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .info-box {
+            background: #FFF4E6;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid #E67E22;
+        }
+
+        .info-box p {
+            color: #546E7A;
+            line-height: 1.7;
+            margin: 8px 0;
+        }
+
+        .success-box {
+            background: #E8F5E9;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #4CAF50;
+        }
+
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .back-btn {
+            background: #95a5a6;
+            font-size: 16px;
+            padding: 15px;
+            margin-top: 15px;
         }
 
         /* 신뢰 배지 */
@@ -373,33 +448,138 @@
 <body>
     <!-- 히어로 섹션 -->
     <section class="hero">
-        <h1>🤖 Claude 완벽 가이드</h1>
-        <p class="subtitle">국내 최초! Claude 4종 세트 완전 정복</p>
-        <div>
-            <span class="badge">⚡ 즉시 다운로드</span>
-            <span class="badge">📱 모든 기기 지원</span>
-            <span class="badge">💯 실전 노하우</span>
+        <div style="font-size: 14px; opacity: 0.9; margin-bottom: 15px;">현직 공인회계사 · 스타트업 엑셀러레이터</div>
+        <h1>🤖 5개월 만에<br>완전히 다른 사람이 되었습니다</h1>
+        <p class="subtitle">"10년간 개발자와 씨름하다 실패한 IT 플랫폼,<br>Claude와 함께 5개월 만에 돌파구를 찾았습니다"</p>
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3);">
+            <div style="font-size: 16px; margin-bottom: 15px; font-weight: 600;">✅ 실제 성과</div>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 14px;">
+                <span class="badge">📄 특허출원서 5건</span>
+                <span class="badge">📊 사업기획서 수십 개</span>
+                <span class="badge">⚙️ 시스템 설계서 6개</span>
+                <span class="badge">📚 책 3권 동시 집필</span>
+            </div>
         </div>
     </section>
 
     <!-- 특징 섹션 -->
     <section class="container">
+        <h2 style="text-align: center; font-size: 36px; color: #2C3E50; margin-bottom: 20px;">📖 이 책의 핵심 가치</h2>
+        <p style="text-align: center; color: #546E7A; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            "ChatGPT만 쓰다가 Claude를 알게 된 후 5개월.
+            완전히 다른 사람이 되었습니다."
+        </p>
         <div class="features fade-in">
             <div class="feature-card">
                 <div class="feature-icon">📱</div>
-                <h3>4종 완벽 커버</h3>
-                <p>모바일앱, 웹, 데스크톱앱, Claude Code까지 모든 Claude 사용법을 한 권에!</p>
+                <h3>Claude 4종 세트 완벽 설치</h3>
+                <p>모바일앱, 웹, 데스크톱앱, Claude Code까지 3시간이면 모두 설치 완료! 국내 최초 종합 가이드북</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💡</div>
-                <h3>토큰 절약 노하우</h3>
-                <p>5개월간의 실제 사용 경험에서 나온 실전 토큰 절약 꿀팁 대공개!</p>
+                <h3>토큰 절약 실전 노하우</h3>
+                <p>Claude 사용료 체계 완전 이해 + 실제 업무에서 터득한 토큰 절약 10가지 비법</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">📖</div>
-                <h3>단계별 상세 가이드</h3>
-                <p>초보자도 쉽게 따라할 수 있는 스크린샷 포함 단계별 설명!</p>
+                <div class="feature-icon">🚀</div>
+                <h3>254조원 기업 Anthropic 스토리</h3>
+                <p>OpenAI를 뛰어넘은 Anthropic의 성장 스토리와 Claude 기술 혁신 과정 완벽 정리</p>
             </div>
+        </div>
+    </section>
+
+    <!-- 시스템 구성도 -->
+    <section style="background: #F8F9FA; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; color: #2C3E50; margin-bottom: 20px;">⚙️ 완전 자동화된 판매 시스템</h2>
+            <p style="text-align: center; color: #546E7A; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                결제부터 PDF 다운로드까지 단 3초! 최첨단 서버리스 아키텍처로 구축된 무인 판매 시스템
+            </p>
+
+            <div style="max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                <!-- 1단계: 구매 -->
+                <div style="display: flex; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+                    <div style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 15px; text-align: center;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">👤</div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px;">1단계: 고객 구매</div>
+                        <div style="font-size: 14px; opacity: 0.9;">landing.html 접속<br>이메일 입력 후 결제</div>
+                    </div>
+                    <div style="font-size: 24px; color: #667eea;">→</div>
+                    <div style="flex: 1; min-width: 200px; background: #FFE5D9; padding: 25px; border-radius: 15px; text-align: center; border: 2px solid #FF6B35;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">💳</div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px; color: #2C3E50;">토스페이먼츠</div>
+                        <div style="font-size: 14px; color: #546E7A;">안전한 결제 처리<br>수수료 3.3%</div>
+                    </div>
+                </div>
+
+                <!-- 2단계: 서버 처리 -->
+                <div style="display: flex; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+                    <div style="flex: 1; min-width: 200px; background: #E3F2FD; padding: 25px; border-radius: 15px; text-align: center; border: 2px solid #2196F3;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">⚡</div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px; color: #2C3E50;">Vercel Serverless</div>
+                        <div style="font-size: 14px; color: #546E7A;">결제 승인 처리<br>주문 정보 저장</div>
+                    </div>
+                    <div style="font-size: 24px; color: #667eea;">↔</div>
+                    <div style="flex: 1; min-width: 200px; background: #F3E5F5; padding: 25px; border-radius: 15px; text-align: center; border: 2px solid #9C27B0;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">🐙</div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px; color: #2C3E50;">GitHub</div>
+                        <div style="font-size: 14px; color: #546E7A;">코드 버전 관리<br>자동 배포</div>
+                    </div>
+                </div>
+
+                <!-- 3단계: 배송 -->
+                <div style="display: flex; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+                    <div style="flex: 1; min-width: 200px; background: #E8F5E9; padding: 25px; border-radius: 15px; text-align: center; border: 2px solid #4CAF50;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">📧</div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px; color: #2C3E50;">Gmail SMTP</div>
+                        <div style="font-size: 14px; color: #546E7A;">구매 확인 이메일<br>자동 발송</div>
+                    </div>
+                    <div style="font-size: 24px; color: #667eea;">+</div>
+                    <div style="flex: 1; min-width: 200px; background: #FFF3E0; padding: 25px; border-radius: 15px; text-align: center; border: 2px solid #FF9800;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">☁️</div>
+                        <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px; color: #2C3E50;">Google Drive</div>
+                        <div style="font-size: 14px; color: #546E7A;">PDF 파일 저장<br>보안 다운로드 링크</div>
+                    </div>
+                </div>
+
+                <!-- 4단계: 고객 지원 -->
+                <div style="text-align: center; background: #FFFDE7; padding: 25px; border-radius: 15px; border: 2px solid #FDD835;">
+                    <div style="font-size: 32px; margin-bottom: 10px;">💬</div>
+                    <div style="font-weight: 700; font-size: 18px; margin-bottom: 5px; color: #2C3E50;">카카오톡 채널 @claude</div>
+                    <div style="font-size: 14px; color: #546E7A;">챗봇 자동응답 + 저자 직접 소통 + AI 사업모델 무료 멘토링</div>
+                </div>
+
+                <!-- 시스템 특징 -->
+                <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #E0E0E0;">
+                    <h3 style="text-align: center; color: #2C3E50; margin-bottom: 25px; font-size: 20px;">✨ 시스템의 강점</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 28px; margin-bottom: 8px;">⚡</div>
+                            <div style="font-weight: 600; color: #2C3E50; margin-bottom: 5px;">초고속 처리</div>
+                            <div style="font-size: 13px; color: #546E7A;">결제 후 1분 내<br>PDF 수령</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 28px; margin-bottom: 8px;">🔒</div>
+                            <div style="font-weight: 600; color: #2C3E50; margin-bottom: 5px;">보안 강화</div>
+                            <div style="font-size: 13px; color: #546E7A;">토큰 기반<br>보안 다운로드</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 28px; margin-bottom: 8px;">💰</div>
+                            <div style="font-weight: 600; color: #2C3E50; margin-bottom: 5px;">비용 최소화</div>
+                            <div style="font-size: 13px; color: #546E7A;">서버리스로<br>운영비 거의 0원</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 28px; margin-bottom: 8px;">♾️</div>
+                            <div style="font-weight: 600; color: #2C3E50; margin-bottom: 5px;">무한 확장</div>
+                            <div style="font-size: 13px; color: #546E7A;">자동 스케일링<br>트래픽 급증 대응</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 30px; color: #546E7A; font-size: 14px;">
+                💡 <strong>개발자가 아니어도 괜찮습니다!</strong> 이 시스템은 이미 구축되어 있으며, 구매 후 즉시 작동합니다.
+            </p>
         </div>
     </section>
 
@@ -439,15 +619,22 @@
                 <div class="content-item">
                     <div class="icon">💰</div>
                     <div>
-                        <h4>토큰 절약 노하우</h4>
-                        <p>실제 사용하며 터득한 토큰 아끼는 10가지 방법</p>
+                        <h4>토큰 절약 실전 노하우</h4>
+                        <p>회계감사 실무에서 검증된 토큰 절약 10가지 비법 + Claude 사용료 체계 완전 이해</p>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <div class="icon">🔗</div>
+                    <div>
+                        <h4>MCP 연결 완벽 가이드</h4>
+                        <p>Google Drive, Filesystem, Memory 등 MCP 서버 설치 및 활용법 (Claude의 슈퍼파워!)</p>
                     </div>
                 </div>
                 <div class="content-item">
                     <div class="icon">🚀</div>
                     <div>
-                        <h4>Anthropic 스토리</h4>
-                        <p>OpenAI를 뛰어넘은 Anthropic의 성장 스토리</p>
+                        <h4>254조원 기업 Anthropic 스토리</h4>
+                        <p>OpenAI를 뛰어넘은 Anthropic의 성장 스토리와 Claude 기술 혁신 과정</p>
                     </div>
                 </div>
             </div>
@@ -459,13 +646,29 @@
         <h2>✍️ 저자 소개</h2>
         <div class="author-bio">
             <p><strong>써니(선웅규)</strong></p>
-            <p style="margin-top: 20px;">
-                현직 공인회계사이자 스타트업 엑셀러레이터가 5개월간 Claude를 실제로 사용하며 축적한 모든 노하우를 담았습니다.
+            <p style="margin-top: 20px; font-size: 16px; line-height: 1.8;">
+                현직 공인회계사이자 스타트업 엑셀러레이터입니다.<br>
+                연세대학교 경영학과 졸업 후 삼일회계법인에서 근무했으며,<br>
+                지난 10년간 후앤후(주) 대표로서 IT 플랫폼 개발에 도전했습니다.
+            </p>
+            <p style="margin-top: 20px; font-size: 16px; line-height: 1.8;">
+                <strong>Claude와 함께한 5개월, 놀라운 변화:</strong><br>
+                • 특허출원서 5건 작성 (2건 완료, 3건 진행 중)<br>
+                • 사업기획서 수십 개 작성<br>
+                • 시스템 설계서 6개 이상 완성<br>
+                • 책 3권 동시 집필<br>
+                • 회계감사 AI 활용 모델 개발<br>
+                • 정치인 당선 가능성 지수 모델 개발
+            </p>
+            <p style="margin-top: 20px; font-size: 17px; font-weight: 600; color: #FFE5D9;">
+                "10년간 개발자 문제로 실패했던 프로젝트들,<br>
+                Claude와 함께라면 제가 직접 만들 수 있겠다는 확신이 들었습니다."
             </p>
             <div class="author-badges">
-                <span class="author-badge">🎓 공인회계사</span>
+                <span class="author-badge">🎓 연세대 경영학과</span>
+                <span class="author-badge">💼 공인회계사</span>
                 <span class="author-badge">🚀 스타트업 엑셀러레이터</span>
-                <span class="author-badge">💻 AI 실전 활용 전문가</span>
+                <span class="author-badge">💻 AI 활용능력 마스터 도전자</span>
             </div>
         </div>
     </section>
@@ -485,27 +688,212 @@
         </div>
     </section>
 
+    <!-- 구매자 특전 섹션 -->
+    <section style="background: white; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; color: #2C3E50; margin-bottom: 50px;">🎁 구매자만의 특별한 혜택</h2>
+            <div style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                <div style="background: #FFF8F3; padding: 30px; border-radius: 15px; border-left: 4px solid #D97757;">
+                    <h3 style="color: #D97757; font-size: 20px; margin-bottom: 15px;">1️⃣ 평생 무료 업데이트</h3>
+                    <p style="color: #546E7A; line-height: 1.7;">
+                        GitHub를 통해 지속적으로 업데이트되는 최신 버전을 구매자에게 무료 제공!
+                        Claude가 업데이트될 때마다 새 가이드를 받으세요.
+                    </p>
+                </div>
+                <div style="background: #FFF8F3; padding: 30px; border-radius: 15px; border-left: 4px solid #D97757;">
+                    <h3 style="color: #D97757; font-size: 20px; margin-bottom: 15px;">2️⃣ 카카오톡 채널 지원</h3>
+                    <p style="color: #546E7A; line-height: 1.7;">
+                        카카오톡 채널 <strong style="background: #FAE100; color: #3C1E1E; padding: 2px 8px; border-radius: 4px;">@claude</strong>를 통한 챗봇 자동응답 + 저자와의 직접 소통!
+                        설치 중 막히는 부분이 있다면 즉시 문의하세요.
+                    </p>
+                </div>
+                <div style="background: #FFF8F3; padding: 30px; border-radius: 15px; border-left: 4px solid #D97757;">
+                    <h3 style="color: #D97757; font-size: 20px; margin-bottom: 15px;">3️⃣ AI 사업모델 멘토링</h3>
+                    <p style="color: #546E7A; line-height: 1.7;">
+                        AI를 활용한 사업모델 구상 중이신가요?
+                        공인회계사이자 엑셀러레이터인 저자가 무료로 멘토링해드립니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 구매 섹션 -->
     <section class="purchase fade-in" id="purchase">
         <div class="purchase-box">
             <h2>🎯 지금 바로 시작하세요!</h2>
-            <div class="input-group">
-                <label for="email">📧 이메일 주소</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    placeholder="PDF를 받을 이메일 주소를 입력하세요"
-                    required
-                >
+
+            <!-- Step 1: 초기 화면 -->
+            <div id="step1" class="step active">
+                <div class="info-box">
+                    <p style="font-weight: 600; color: #E67E22; margin-bottom: 10px;">⏰ 얼리버드 특가 진행 중!</p>
+                    <p style="text-align: center; font-size: 28px; font-weight: 900; color: #667eea; margin: 15px 0;">
+                        <span style="text-decoration: line-through; font-size: 18px; color: #95a5a6;">₩19,900</span>
+                        → ₩9,900
+                    </p>
+                    <p>📧 결제 후 1분 이내 이메일로 PDF 다운로드 링크를 받으세요</p>
+                    <p>💯 7일 이내 100% 환불 보장</p>
+                </div>
+                <button class="btn btn-primary" onclick="showKakaoPayStep()">
+                    ₩9,900 구매하기
+                </button>
             </div>
-            <button class="purchase-button" id="payment-button">
-                ₩9,990 결제하고 즉시 다운로드
-            </button>
-            
-            <div class="trust">
+
+            <!-- Step 2: 결제 방법 선택 -->
+            <div id="step2" class="step">
+                <div class="info-box">
+                    <p style="font-weight: 700; font-size: 18px; color: #2C3E50; margin-bottom: 15px;">
+                        💳 Step 1: 결제 방법을 선택하세요
+                    </p>
+                    <p><strong>결제 금액:</strong> ₩9,900</p>
+                </div>
+
+                <!-- 결제 방법 선택 버튼들 -->
+                <button class="btn btn-kakaopay" onclick="selectKakaoPay()">
+                    💰 카카오페이 송금
+                </button>
+
+                <button class="btn" style="background: #4A90E2; color: white; margin-bottom: 15px;" onclick="selectBankTransfer()">
+                    🏦 계좌 이체
+                </button>
+
+                <button class="btn" style="background: #E0E0E0; color: #7f8c8d; margin-bottom: 15px;" onclick="showComingSoon()">
+                    💳 산용카드 결제 (준비 중)
+                </button>
+
+                <button class="btn back-btn" onclick="showStep1()">
+                    ← 이전으로
+                </button>
+            </div>
+
+            <!-- Step 2-1: 카카오페이 송금 -->
+            <div id="step2-kakaopay" class="step">
+                <div class="info-box">
+                    <p style="font-weight: 700; font-size: 18px; color: #2C3E50; margin-bottom: 15px;">
+                        💰 카카오페이 송금
+                    </p>
+                    <p><strong>송금 금액:</strong> ₩9,900</p>
+                    <p><strong>받는 사람:</strong> 선웅규</p>
+                    <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E0E0E0; font-size: 14px; color: #7f8c8d;">
+                        ℹ️ 아래 버튼을 클릭하면 카카오페이 송금 페이지가 열립니다.
+                    </p>
+                </div>
+                <button class="btn btn-kakaopay" onclick="openKakaoPay()">
+                    💰 카카오페이 송금 페이지 열기
+                </button>
+                <button class="btn btn-primary" onclick="showEmailStep()">
+                    ✅ 송금 완료! 이메일 입력하기
+                </button>
+                <button class="btn back-btn" onclick="showPaymentMethodStep()">
+                    ← 결제 방법 다시 선택
+                </button>
+            </div>
+
+            <!-- Step 2-2: 계좌 이체 -->
+            <div id="step2-bank" class="step">
+                <div class="info-box">
+                    <p style="font-weight: 700; font-size: 18px; color: #2C3E50; margin-bottom: 15px;">
+                        🏦 계좌 이체
+                    </p>
+                    <p><strong>입금 금액:</strong> ₩9,900</p>
+                </div>
+
+                <!-- 계좌번호 보기 전 -->
+                <div id="before-account" style="display: block;">
+                    <div style="background: #E3F2FD; padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
+                        <p style="color: #1976d2; font-size: 16px; line-height: 1.8;">
+                            아래 버튼을 클릭하면<br>
+                            입금 계좌번호가 표시됩니다
+                        </p>
+                    </div>
+                    <button class="btn btn-primary" onclick="showBankAccount()">
+                        🔓 계좌번호 확인하기
+                    </button>
+                </div>
+
+                <!-- 계좌번호 보기 후 -->
+                <div id="after-account" style="display: none;">
+                    <div class="info-box" style="background: #E8F5E9; border-left: 4px solid #4CAF50;">
+                        <p style="margin-top: 15px;">
+                            <strong style="color: #4A90E2; font-size: 20px;">하나은행 620-241128-571</strong><br>
+                            <span style="font-size: 16px; color: #2C3E50; font-weight: 600;">예금주: 선웅규</span>
+                        </p>
+                        <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #c8e6c9; font-size: 14px; color: #7f8c8d;">
+                            ℹ️ 입금자명을 꼭 기억해주세요! (환불 시 필요)
+                        </p>
+                    </div>
+                    <button class="btn btn-primary" onclick="copyBankAccount()">
+                        📋 계좌번호 복사하기
+                    </button>
+                    <button class="btn btn-primary" onclick="showEmailStep()">
+                        ✅ 입금 완료! 이메일 입력하기
+                    </button>
+                </div>
+
+                <button class="btn back-btn" onclick="showPaymentMethodStep()">
+                    ← 결제 방법 다시 선택
+                </button>
+            </div>
+
+            <!-- Step 3: 이메일 입력 -->
+            <div id="step3" class="step">
+                <div class="info-box">
+                    <p style="font-weight: 700; font-size: 18px; color: #2C3E50; margin-bottom: 15px;">
+                        📧 Step 2: PDF를 받을 이메일 주소 입력
+                    </p>
+                    <p>입력하신 이메일로 즉시 다운로드 링크를 보내드립니다.</p>
+                </div>
+                <div class="input-group">
+                    <label for="email">이메일 주소</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+                </div>
+                <div class="input-group">
+                    <label for="name">이름 (선택)</label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="홍길동"
+                    >
+                </div>
+                <button class="btn btn-primary" id="sendBtn" onclick="sendEmail()">
+                    📩 다운로드 링크 받기
+                </button>
+                <button class="btn back-btn" onclick="showPaymentMethodStep()">
+                    ← 결제 방법 다시 선택
+                </button>
+            </div>
+
+            <!-- Step 4: 완료 -->
+            <div id="step4" class="step">
+                <div class="success-box">
+                    <div class="success-icon">✅</div>
+                    <h3 style="color: #2e7d32; margin-bottom: 15px; font-size: 24px;">전송 완료!</h3>
+                    <p style="color: #546E7A; line-height: 1.8;">
+                        <strong id="sentEmail"></strong>로<br>
+                        다운로드 링크를 보내드렸습니다.<br><br>
+                        이메일을 확인해주세요! 📧
+                    </p>
+                    <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #c8e6c9; font-size: 14px; color: #7f8c8d;">
+                        ℹ️ 이메일이 오지 않았다면 스팸함을 확인해주세요.<br>
+                        문의: 카카오톡 채널 <strong>@claude</strong>
+                    </p>
+                </div>
+                <a href="http://pf.kakao.com/_WqSxcn/chat" target="_blank">
+                    <button class="btn btn-kakaopay" style="margin-top: 20px;">
+                        💬 카카오톡 채널로 문의하기
+                    </button>
+                </a>
+            </div>
+
+            <div class="trust" style="margin-top: 40px; padding-top: 40px; border-top: 2px solid #e0e0e0;">
                 <div class="trust-item">
-                    <div class="trust-icon">🔒</div>
-                    <div class="trust-text">안전한 결제<br>토스페이먼츠</div>
+                    <div class="trust-icon">💳</div>
+                    <div class="trust-text">3가지 결제<br>카드/송금/계좌</div>
                 </div>
                 <div class="trust-item">
                     <div class="trust-icon">⚡</div>
@@ -534,84 +922,173 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Q. 초보자도 따라할 수 있나요?</div>
-                    <div class="faq-answer">A. 물론입니다! 스크린샷과 함께 단계별로 자세히 설명되어 있어 누구나 쉽게 따라하실 수 있습니다.</div>
+                    <div class="faq-answer">A. 물론입니다! 스크린샷과 함께 단계별로 자세히 설명되어 있어 누구나 쉽게 따라하실 수 있습니다. 평균 3시간이면 Claude Code까지 모두 설치 가능합니다.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q. ChatGPT와 어떻게 다른가요?</div>
+                    <div class="faq-answer">A. Claude는 더 긴 대화 기억, 더 정확한 답변, MCP를 통한 외부 도구 연결 등 ChatGPT와는 차별화된 강점이 있습니다. 특히 Claude Code는 개발자가 아니어도 파일 관리, 자동화 작업 등을 쉽게 할 수 있게 해줍니다.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Q. 업데이트가 있나요?</div>
-                    <div class="faq-answer">A. Claude가 업데이트되면 가이드도 함께 업데이트되며, 구매자분들께 무료로 새 버전을 보내드립니다!</div>
+                    <div class="faq-answer">A. 네! GitHub를 통해 지속적으로 업데이트됩니다. Claude가 업데이트되면 가이드도 함께 업데이트되며, 구매자분들께 무료로 최신 버전을 이메일로 보내드립니다!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Q. 어떤 운영체제를 지원하나요?</div>
+                    <div class="faq-answer">A. Windows와 Mac 모두 지원합니다. 모바일은 iOS와 Android 모두 가능합니다. 각 운영체제별로 상세한 설치 가이드가 포함되어 있습니다.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Q. 문의는 어떻게 하나요?</div>
-                    <div class="faq-answer">A. 카카오톡 채널 [@claude]로 언제든 문의주세요. 빠르게 답변드리겠습니다!</div>
+                    <div class="faq-answer">A. 카카오톡 채널 <strong style="background: #FAE100; color: #3C1E1E; padding: 2px 8px; border-radius: 4px;">@claude</strong>로 언제든 문의주세요. 설치 중 막히는 부분이나 궁금한 점을 빠르게 답변드립니다!</div>
                 </div>
             </div>
         </div>
     </section>
 
     <script>
-        // 토스페이먼츠 설정
-        const clientKey = 'test_gck_docs_OaPz8L5KdmQXkzRz3y47BMw6'; // 실제 사용 시 변경 필요!
-        const customerKey = 'customer_' + Date.now();
-        const paymentWidget = PaymentWidget(clientKey, customerKey);
+        function showStep1() {
+            hideAllSteps();
+            document.getElementById('step1').classList.add('active');
+        }
 
-        // 결제 버튼 클릭
-        document.getElementById('payment-button').addEventListener('click', async () => {
+        function showPaymentMethodStep() {
+            hideAllSteps();
+            document.getElementById('step2').classList.add('active');
+        }
+
+        function selectKakaoPay() {
+            hideAllSteps();
+            document.getElementById('step2-kakaopay').classList.add('active');
+        }
+
+        function selectBankTransfer() {
+            hideAllSteps();
+            document.getElementById('step2-bank').classList.add('active');
+        }
+
+        function showComingSoon() {
+            alert('💳 산용카드 결제 기능 준비 중입니다!\n\n토스페이먼츠 연동 완료 후 오픈 예정입니다.\n현재는 카카오페이 송금 또는 계좌 이체를 이용해주세요. 😊');
+        }
+
+        function showEmailStep() {
+            hideAllSteps();
+            document.getElementById('step3').classList.add('active');
+            document.getElementById('email').focus();
+        }
+
+        function hideAllSteps() {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+        }
+
+        function openKakaoPay() {
+            // 카카오페이 송금 링크를 새 탭으로 열기
+            window.open('https://qr.kakaopay.com/Ej8qUBxLx', '_blank');
+        }
+
+        function showBankAccount() {
+            // 계좌번호 표시
+            document.getElementById('before-account').style.display = 'none';
+            document.getElementById('after-account').style.display = 'block';
+        }
+
+        function copyBankAccount() {
+            // 계좌번호 복사
+            const accountNumber = '620-241128-571';
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(accountNumber).then(() => {
+                    alert('📋 계좌번호가 복사되었습니다!\n\n하나은행 ' + accountNumber);
+                });
+            } else {
+                // 구형 브라우저 대응
+                alert('📋 계좌번호\n\n하나은행 ' + accountNumber + '\n예금주: 선웅규\n\n(수동으로 복사해주세요)');
+            }
+        }
+
+        async function sendEmail() {
             const email = document.getElementById('email').value.trim();
-            
+            const name = document.getElementById('name').value.trim();
+
+            // 이메일 검증
             if (!email) {
                 alert('📧 이메일 주소를 입력해주세요!');
                 document.getElementById('email').focus();
                 return;
             }
-            
+
             if (!email.includes('@') || !email.includes('.')) {
                 alert('📧 올바른 이메일 주소를 입력해주세요!');
                 document.getElementById('email').focus();
                 return;
             }
 
+            // 버튼 비활성화 및 로딩 표시
+            const sendBtn = document.getElementById('sendBtn');
+            const originalText = sendBtn.innerHTML;
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<span class="loading"></span> 전송 중...';
+
             try {
-                await paymentWidget.requestPayment({
-                    method: "CARD",
-                    amount: {
-                        currency: "KRW",
-                        value: 9990,
+                // API 호출
+                const response = await fetch('/api/send-download', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
                     },
-                    orderId: 'ORDER_' + Date.now(),
-                    orderName: 'Claude 완벽 가이드',
-                    customerEmail: email,
-                    successUrl: window.location.origin + '/success.html',
-                    failUrl: window.location.origin + '/fail.html',
+                    body: JSON.stringify({
+                        email: email,
+                        name: name || '고객님'
+                    })
                 });
-            } catch (error) {
-                console.error('결제 오류:', error);
-                alert('❌ 결제 중 오류가 발생했습니다. 다시 시도해주세요.\n\n오류가 계속되면 카카오톡 채널로 문의해주세요!');
-            }
-        });
 
-        // 스크롤 애니메이션
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+                const result = await response.json();
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                if (response.ok && result.success) {
+                    // 성공
+                    document.getElementById('sentEmail').textContent = email;
+                    hideAllSteps();
+                    document.getElementById('step4').classList.add('active');
+                } else {
+                    // 실패
+                    throw new Error(result.error || '전송 실패');
                 }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach((el) => {
-            observer.observe(el);
-        });
-
-        // 이메일 입력 시 엔터키로 결제
-        document.getElementById('email').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                document.getElementById('payment-button').click();
+            } catch (error) {
+                console.error('전송 오류:', error);
+                alert('❌ 전송 중 오류가 발생했습니다.\n\n카카오톡 채널로 문의해주세요:\n이메일 주소: ' + email);
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = originalText;
             }
+        }
+
+        // 이메일 입력 시 엔터키로 전송
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('email');
+            if (emailInput) {
+                emailInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendEmail();
+                    }
+                });
+            }
+
+            // 스크롤 애니메이션
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach((el) => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>
