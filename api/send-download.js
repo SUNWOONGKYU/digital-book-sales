@@ -58,8 +58,6 @@ export default async function handler(req, res) {
                     </div>
 
                     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; text-align: center;">
-                        <h2 style="margin-bottom: 20px; font-size: 24px;">📥 PDF 다운로드</h2>
-                        <p style="font-size: 16px; opacity: 0.95; margin-bottom: 25px;">아래 버튼을 클릭하여 PDF 파일을 다운로드하세요</p>
                         <a href="${pdfDownloadLink}" style="display: inline-block; background: white; color: #667eea; padding: 15px 40px; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 18px;">
                             📄 PDF 다운로드하기
                         </a>
@@ -69,7 +67,6 @@ export default async function handler(req, res) {
                         <h3 style="color: #2C3E50; margin-bottom: 15px;">📋 구매 내역</h3>
                         <p style="color: #546E7A; margin: 8px 0;"><strong>이메일:</strong> ${email}</p>
                         <p style="color: #546E7A; margin: 8px 0;"><strong>결제금액:</strong> ₩5,000</p>
-                        <p style="color: #546E7A; margin: 8px 0;"><strong>구매일시:</strong> ${new Date().toLocaleString('ko-KR')}</p>
                     </div>
 
                     <div style="background: #e3f2fd; padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #1976d2;">
