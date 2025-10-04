@@ -63,7 +63,6 @@ export default async function handler(req, res) {
                         <a href="${pdfDownloadLink}" style="display: inline-block; background: white; color: #667eea; padding: 15px 40px; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 18px;">
                             📄 PDF 다운로드하기
                         </a>
-                        <p style="font-size: 14px; margin-top: 20px; opacity: 0.9;">링크는 영구적으로 사용 가능합니다</p>
                     </div>
 
                     <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
