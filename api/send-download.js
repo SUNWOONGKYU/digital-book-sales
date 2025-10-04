@@ -39,9 +39,9 @@ export default async function handler(req, res) {
 
         // 이메일 내용
         const mailOptions = {
-            from: `"Claude 완벽 가이드" <${process.env.GMAIL_USER}>`,
+            from: `"Claude 설치부터 기본 사용까지 완벽 가이드" <${process.env.GMAIL_USER}>`,
             to: email,
-            subject: '🎉 Claude 완벽 가이드 구매 완료!',
+            subject: '🎉 Claude 설치부터 기본 사용까지 완벽 가이드 구매 완료!',
             html: `
                 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                     <div style="text-align: center; margin-bottom: 40px;">
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
                             </svg>
                         </div>
                         <h1 style="color: #2C3E50; margin-bottom: 10px;">${name || '고객'}님, 구매해주셔서 감사합니다!</h1>
-                        <p style="color: #7f8c8d; font-size: 16px;">Claude 완벽 가이드를 구매해주셔서 진심으로 감사드립니다.</p>
+                        <p style="color: #7f8c8d; font-size: 16px;">Claude 설치부터 기본 사용까지 완벽 가이드를 구매해주셔서 진심으로 감사드립니다.</p>
                     </div>
 
                     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; text-align: center;">
