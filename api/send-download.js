@@ -73,6 +73,12 @@ export default async function handler(req, res) {
 
                     <div style="background: #e3f2fd; padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #1976d2;">
                         <p style="color: #546E7A; line-height: 1.8; font-size: 16px; margin-bottom: 15px;">
+                            Claude 4종과 VS Code를 설치해서 능숙하게 사용하는 사람이 되세요.
+                        </p>
+                        <p style="color: #546E7A; line-height: 1.8; font-size: 16px; margin-bottom: 15px;">
+                            자기 전문 분야에 AI를 활용하여 업무를 혁신하는 시스템을 개발하세요.
+                        </p>
+                        <p style="color: #546E7A; line-height: 1.8; font-size: 16px; margin-bottom: 15px;">
                             ChatGPT 등 여러 AI를 API로 연결해서 활용하고, 개발 주도권을 확실하게 본인이 가져가세요.
                         </p>
                         <p style="color: #546E7A; line-height: 1.8; font-size: 16px; margin-bottom: 15px;">
