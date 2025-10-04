@@ -37,6 +37,7 @@ async function main() {
         console.log('   1. Orders - 주문 정보');
         console.log('   2. DownloadLogs - 다운로드 기록');
         console.log('   3. Analytics - 분석 데이터');
+        console.log('   4. EmailLogs - 이메일 발송 기록');
         console.log('\n💡 이제 판매 시스템을 사용할 수 있습니다!');
 
     } catch (error) {

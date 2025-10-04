@@ -326,8 +326,40 @@ export async function getDailyStats(date) {
 }
 
 /**
+ * 이메일 발송 로그 저장
+ * EmailLogs 시트 컬럼: email, name, sentAt, success, errorMessage
+ */
+export async function saveEmailLog(emailData) {
+    const sheets = await getSheetsClient();
+    const spreadsheetId = process.env.SPREADSHEET_ID;
+
+    const values = [[
+        emailData.email,
+        emailData.name || '',
+        new Date().toISOString(),
+        emailData.success ? 'SUCCESS' : 'FAILED',
+        emailData.errorMessage || ''
+    ]];
+
+    try {
+        await sheets.spreadsheets.values.append({
+            spreadsheetId,
+            range: 'EmailLogs!A:E',
+            valueInputOption: 'USER_ENTERED',
+            resource: { values }
+        });
+
+        return { success: true };
+    } catch (error) {
+        console.error('이메일 로그 저장 실패:', error);
+        // 로그 실패는 치명적이지 않으므로 에러를 던지지 않음
+        return { success: false };
+    }
+}
+
+/**
  * 스프레드시트 초기화 (최초 1회 실행)
- * Orders, DownloadLogs, Analytics 시트 생성 및 헤더 설정
+ * Orders, DownloadLogs, Analytics, EmailLogs 시트 생성 및 헤더 설정
  */
 export async function initializeSpreadsheet() {
     const sheets = await getSheetsClient();
@@ -365,6 +397,16 @@ export async function initializeSpreadsheet() {
             valueInputOption: 'USER_ENTERED',
             resource: {
                 values: [['date', 'totalSales', 'revenue', 'refundCount', 'downloadCount']]
+            }
+        });
+
+        // EmailLogs 시트 헤더
+        await sheets.spreadsheets.values.update({
+            spreadsheetId,
+            range: 'EmailLogs!A1:E1',
+            valueInputOption: 'USER_ENTERED',
+            resource: {
+                values: [['email', 'name', 'sentAt', 'success', 'errorMessage']]
             }
         });
 

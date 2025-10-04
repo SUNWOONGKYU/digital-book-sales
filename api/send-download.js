@@ -8,6 +8,7 @@
 import nodemailer from 'nodemailer';
 import fs from 'fs';
 import path from 'path';
+import { saveEmailLog } from './lib/sheets.js';
 
 export default async function handler(req, res) {
     // POST 요청만 허용
@@ -110,6 +111,17 @@ export default async function handler(req, res) {
         // 이메일 발송
         await transporter.sendMail(mailOptions);
 
+        // Google Sheets에 성공 로그 저장 (실패해도 무시)
+        try {
+            await saveEmailLog({
+                email: email,
+                name: name,
+                success: true
+            });
+        } catch (sheetError) {
+            console.error('Sheets 로그 저장 실패 (무시):', sheetError.message);
+        }
+
         // 성공 응답
         return res.status(200).json({
             success: true,
@@ -124,6 +136,18 @@ export default async function handler(req, res) {
             code: error.code,
             command: error.command
         });
+
+        // Google Sheets에 실패 로그 저장 (실패해도 무시)
+        try {
+            await saveEmailLog({
+                email: email,
+                name: name,
+                success: false,
+                errorMessage: error.message
+            });
+        } catch (sheetError) {
+            console.error('Sheets 로그 저장 실패 (무시):', sheetError.message);
+        }
 
         return res.status(500).json({
             success: false,
