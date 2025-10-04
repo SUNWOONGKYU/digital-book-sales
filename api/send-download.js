@@ -1,13 +1,11 @@
 /**
- * PDF 직접 첨부 발송 API
+ * PDF 다운로드 링크 발송 API
  * POST /api/send-download
  *
- * 이메일 주소를 받아서 PDF 파일을 직접 첨부하여 발송
+ * 이메일 주소를 받아서 Google Drive PDF 다운로드 링크를 발송
  */
 
 import nodemailer from 'nodemailer';
-import fs from 'fs';
-import path from 'path';
 import { saveEmailLog } from './lib/sheets.js';
 
 export default async function handler(req, res) {
@@ -36,8 +34,8 @@ export default async function handler(req, res) {
             }
         });
 
-        // PDF 파일 경로
-        const pdfPath = path.join(process.cwd(), '판매용PDF', 'Claude_설치와사용_완벽가이드_v1.0.pdf');
+        // Google Drive PDF 링크 (환경 변수에서 가져오거나 직접 설정)
+        const pdfDownloadLink = process.env.PDF_DOWNLOAD_LINK || 'https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing';
 
         // 이메일 내용
         const mailOptions = {
@@ -53,9 +51,12 @@ export default async function handler(req, res) {
                     </div>
 
                     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; text-align: center;">
-                        <h2 style="margin-bottom: 15px; font-size: 24px;">📎 PDF 파일 첨부</h2>
-                        <p style="font-size: 16px; opacity: 0.95;">이 이메일에 PDF 파일이 첨부되어 있습니다.</p>
-                        <p style="font-size: 14px; margin-top: 15px; opacity: 0.9;">📥 첨부파일을 다운로드하여 바로 이용하실 수 있습니다</p>
+                        <h2 style="margin-bottom: 20px; font-size: 24px;">📥 PDF 다운로드</h2>
+                        <p style="font-size: 16px; opacity: 0.95; margin-bottom: 25px;">아래 버튼을 클릭하여 PDF 파일을 다운로드하세요</p>
+                        <a href="${pdfDownloadLink}" style="display: inline-block; background: white; color: #667eea; padding: 15px 40px; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 18px;">
+                            📄 PDF 다운로드하기
+                        </a>
+                        <p style="font-size: 14px; margin-top: 20px; opacity: 0.9;">링크는 영구적으로 사용 가능합니다</p>
                     </div>
 
                     <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
@@ -99,13 +100,7 @@ export default async function handler(req, res) {
                         <p>받는 사람: ${email}</p>
                     </div>
                 </div>
-            `,
-            attachments: [
-                {
-                    filename: 'Claude_설치와사용_완벽가이드_v1.0.pdf',
-                    path: pdfPath
-                }
-            ]
+            `
         };
 
         // 이메일 발송
