@@ -116,10 +116,16 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error('이메일 발송 오류:', error);
+        console.error('Error details:', {
+            message: error.message,
+            code: error.code,
+            command: error.command
+        });
 
         return res.status(500).json({
             success: false,
-            error: '이메일 발송 중 오류가 발생했습니다. 카카오톡 채널로 문의해주세요.'
+            error: '이메일 발송 중 오류가 발생했습니다. 카카오톡 채널 "AI실전활용연구소"로 문의해주세요.',
+            kakaoLink: 'http://pf.kakao.com/_WqSxcn/chat'
         });
     }
 }
