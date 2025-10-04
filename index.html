@@ -3,505 +3,1101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Claude Desktop 설치부터 실전 활용까지, 써니의 완벽 가이드">
-    <title>Claude 설치부터 기본 사용까지 완벽 가이드 | 써니</title>
+    <title>Claude 설치부터 기본 사용까지 완벽 가이드 - 국내 최초 Claude 4종 종합 설치 가이드북</title>
+    <meta name="description" content="3시간이면 Claude Code까지 설치 완료! 모바일앱, 웹, 데스크톱앱, Claude Code 한번에 설치. 토큰 절약 실전 노하우와 Anthropic 성장 스토리까지. 현직 공인회계사의 5개월 실전 경험이 담긴 완벽 가이드. 추석 연휴 특별 할인 10월 12일까지!">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;900&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-
+        /* 헤더 섹션 */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #D97757 0%, #CC5634 100%);
             color: white;
-            padding: 60px 40px;
+            padding: 30px 20px;
             text-align: center;
         }
+        
+        /* 헤딩 계층 구조 */
+        h1 {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.2;
+        }
 
-        .hero h1 {
+        h2 {
             font-size: 32px;
             font-weight: 700;
-            margin-bottom: 20px;
             line-height: 1.3;
         }
 
-        .hero .subtitle {
-            font-size: 18px;
-            opacity: 0.95;
-            margin-bottom: 10px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-top: 15px;
-        }
-
-        .content {
-            padding: 50px 40px;
-        }
-
-        .price-section {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 15px;
-        }
-
-        .price {
-            font-size: 48px;
+        h3 {
+            font-size: 22px;
             font-weight: 700;
-            color: #667eea;
-            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
-        .price-note {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .features {
-            margin-bottom: 40px;
-        }
-
-        .features h2 {
-            font-size: 24px;
-            margin-bottom: 25px;
-            color: #2c3e50;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: start;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-
-        .feature-icon {
-            font-size: 24px;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-
-        .feature-text h3 {
-            font-size: 16px;
+        h4 {
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 5px;
-            color: #2c3e50;
-        }
-
-        .feature-text p {
-            font-size: 14px;
-            color: #666;
             line-height: 1.5;
         }
 
-        /* 카카오페이 섹션 */
-        .kakaopay-section {
-            background: linear-gradient(135deg, #FEE500 0%, #FFEB3B 100%);
-            border: 3px solid #F9D700;
-            border-radius: 20px;
-            padding: 50px 40px;
-            margin: 40px 0;
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(254, 229, 0, 0.3);
-        }
-
-        .kakaopay-button {
-            display: inline-block;
-            background: #3C1E1E;
-            color: #FEE500;
-            padding: 20px 60px;
-            font-size: 22px;
-            font-weight: 800;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
-            box-shadow: 0 6px 20px rgba(60, 30, 30, 0.3);
-        }
-
-        .kakaopay-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(60, 30, 30, 0.4);
-        }
-
-        .divider {
-            text-align: center;
-            margin: 40px 0;
-            color: #999;
-            font-size: 14px;
-            position: relative;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            width: 40%;
-            height: 1px;
-            background: #ddd;
-        }
-
-        .divider::before {
-            left: 0;
-        }
-
-        .divider::after {
-            right: 0;
-        }
-
-        /* 계좌이체 섹션 */
-        .bank-section {
-            background: #f8f9fa;
-            border: 2px solid #e0e0e0;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .bank-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 18px 50px;
-            font-size: 18px;
-            font-weight: 700;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .bank-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        .account-info {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 20px;
-            display: none;
-        }
-
-        .account-info.show {
-            display: block;
-            animation: slideDown 0.3s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .account-detail {
-            margin: 15px 0;
-        }
-
-        .account-detail label {
-            display: block;
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .account-detail .value {
-            font-size: 20px;
-            font-weight: 700;
-            color: #667eea;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .copy-button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .copy-button:hover {
-            background: #5568d3;
-        }
-
-        .copy-button.copied {
-            background: #27ae60;
-        }
-
-        .steps {
-            margin-top: 30px;
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .steps h4 {
-            color: #856404;
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
             margin-bottom: 15px;
-            font-size: 16px;
+            line-height: 1.2;
         }
 
-        .steps ol {
-            margin-left: 20px;
-        }
-
-        .steps li {
-            margin: 8px 0;
-            color: #856404;
-            font-size: 14px;
-        }
-
-        .author {
-            text-align: center;
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            margin-top: 40px;
-        }
-
-        .author h3 {
+        .hero .subtitle {
             font-size: 20px;
-            color: #2c3e50;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        /* 컨테이너 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* 가격 섹션 */
+        .price-section {
+            background: #f8f9fa;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .price-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .original-price {
+            font-size: 24px;
+            color: #95a5a6;
+            text-decoration: line-through;
             margin-bottom: 10px;
         }
+        
+        .sale-price {
+            font-size: 48px;
+            font-weight: 900;
+            color: #D97757;
+            margin-bottom: 15px;
+        }
 
-        .author p {
-            color: #666;
-            font-size: 14px;
+        .discount-badge {
+            display: inline-block;
+            background: #D97757;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        /* 특징 섹션 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: #2C3E50;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #546E7A;
             line-height: 1.8;
         }
 
-        .footer {
+        /* 포함 내용 */
+        .contents {
+            background: white;
+            padding: 30px 20px;
+        }
+
+        .contents h2 {
             text-align: center;
-            padding: 30px;
-            background: #2c3e50;
+            color: #2C3E50;
+            margin-bottom: 20px;
+        }
+        
+        .content-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-item {
+            display: flex;
+            align-items: start;
+            padding: 25px;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+        
+        .content-item:hover {
+            background: #e3f2fd;
+            transform: translateX(10px);
+        }
+        
+        .content-item .icon {
+            font-size: 32px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .content-item h4 {
+            color: #2C3E50;
+            margin-bottom: 10px;
+        }
+        
+        .content-item p {
+            color: #546E7A;
+            line-height: 1.6;
+        }
+
+        /* 저자 소개 */
+        .author {
+            background: linear-gradient(135deg, #4A90E2 0%, #2E5CB8 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .author h2 {
+            margin-bottom: 15px;
+        }
+        
+        .author-bio {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+        
+        .author-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .author-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+
+        /* 구매 섹션 */
+        .purchase {
+            background: #f8f9fa;
+            padding: 30px 20px;
+        }
+
+        .purchase-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .purchase h2 {
+            text-align: center;
+            color: #2C3E50;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 12px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #4A90E2;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 22px;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #D97757 0%, #CC5634 100%);
             color: white;
         }
 
+        .btn-kakaopay {
+            background: #FEE500;
+            color: #3C1E1E;
+            margin-bottom: 15px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .info-box {
+            background: #FFF4E6;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid #E67E22;
+        }
+
+        .info-box p {
+            color: #546E7A;
+            line-height: 1.7;
+            margin: 8px 0;
+        }
+
+        .success-box {
+            background: #E8F5E9;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #4CAF50;
+        }
+
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .back-btn {
+            background: #95a5a6;
+            font-size: 16px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        /* 신뢰 배지 */
+        .trust {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+        
+        .trust-item {
+            text-align: center;
+        }
+        
+        .trust-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .trust-text {
+            color: #546E7A;
+            font-size: 14px;
+        }
+
+        /* FAQ */
+        .faq {
+            background: white;
+            padding: 30px 20px;
+        }
+        
+        .faq h2 {
+            text-align: center;
+            color: #2C3E50;
+            margin-bottom: 30px;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 25px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+        }
+        
+        .faq-question {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2C3E50;
+            margin-bottom: 12px;
+        }
+        
+        .faq-answer {
+            color: #546E7A;
+            line-height: 1.8;
+        }
+
+        /* 반응형 */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 24px;
-            }
-            
-            .hero {
-                padding: 40px 20px;
-            }
-            
-            .content {
-                padding: 30px 20px;
-            }
-            
-            .price {
-                font-size: 36px;
-            }
+            .hero h1 { font-size: 32px; }
+            .hero .subtitle { font-size: 18px; }
+            .sale-price { font-size: 42px; }
+            .purchase-box { padding: 30px 20px; }
+        }
 
-            .kakaopay-section {
-                padding: 40px 20px;
-            }
-
-            .kakaopay-button {
-                padding: 18px 40px;
-                font-size: 18px;
-            }
-
-            .account-detail .value {
-                font-size: 16px;
-                flex-direction: column;
-                gap: 8px;
-            }
+        /* 스크롤 애니메이션 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1>📚 Claude 설치부터<br>기본 사용까지 완벽 가이드</h1>
-            <p class="subtitle">AI 활용의 시작, Claude Desktop과 함께</p>
-            <div class="badge">Version 1.0 | 저자: 써니(선웅규)</div>
+    <!-- 히어로 섹션: 제목 -->
+    <section class="hero">
+        <h1>🤖 Claude 설치부터 기본 사용까지<br>완벽 가이드</h1>
+        <div style="margin-top: 20px; font-size: 16px; opacity: 0.9;">
+            <p style="margin-bottom: 5px;">저자: 써니(선웅규) | 집필 AI: Claude</p>
+            <p>Version 1.0 | 2025년 9월 30일</p>
         </div>
+    </section>
 
-        <div class="content">
-            <div class="price-section">
-                <div class="price">
-                    ₩9,990
-                </div>
-                <p class="price-note">PDF 200페이지 + 평생 무료 업데이트</p>
+    <!-- 구성 3개 -->
+    <section class="container">
+        <div class="features fade-in">
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #D97757;">1️⃣</div>
+                <h3 style="color: #D97757;">Claude 4종 세트 한번에 설치해서 바로 사용하기</h3>
             </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #4A90E2;">2️⃣</div>
+                <h3 style="color: #4A90E2;">Claude 사용료 체계 완전 이해하고 토큰 절약 실전 노하우 적용하기</h3>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #27AE60;">3️⃣</div>
+                <h3 style="color: #27AE60;">기업가치 254조원 Anthropic의 성장 스토리와 Claude의 기술 혁신과정 이해하기</h3>
+            </div>
+        </div>
+    </section>
 
-            <div class="features">
-                <h2>🎯 이런 것들을 배울 수 있어요</h2>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">💻</div>
-                    <div class="feature-text">
-                        <h3>Claude Desktop 완벽 설치</h3>
-                        <p>Windows, Mac 환경별 상세한 설치 가이드와 초기 설정 방법</p>
-                    </div>
+    <!-- 특징 2개 -->
+    <section style="background: linear-gradient(135deg, #4A90E2 0%, #2E5CB8 100%); color: white; padding: 50px 20px; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <div style="background: rgba(255,255,255,0.2); padding: 20px 40px; border-radius: 15px; min-width: 280px;">
+                    <div style="font-size: 42px; margin-bottom: 10px;">🏆</div>
+                    <h2 style="margin: 0; color: white;">국내 최초 Claude 4종<br>종합 설치 가이드북</h2>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🚀</div>
-                    <div class="feature-text">
-                        <h3>실전 활용 노하우</h3>
-                        <p>일상 업무에 바로 적용 가능한 Claude 활용법과 팁</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">📝</div>
-                    <div class="feature-text">
-                        <h3>프롬프트 작성 기법</h3>
-                        <p>더 나은 결과를 얻기 위한 효과적인 질문 방법</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🔄</div>
-                    <div class="feature-text">
-                        <h3>평생 무료 업데이트</h3>
-                        <p>Claude의 새로운 기능이 추가될 때마다 가이드 업데이트</p>
-                    </div>
+                <div style="background: rgba(255,255,255,0.2); padding: 20px 40px; border-radius: 15px; min-width: 280px;">
+                    <div style="font-size: 42px; margin-bottom: 10px;">⚡</div>
+                    <h2 style="margin: 0; color: white;">3시간이면<br>Claude Code까지 설치 완료</h2>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- 카카오페이 섹션 -->
-            <div class="kakaopay-section">
-                <a href="https://qr.kakaopay.com/Ej8qUBxLx" class="kakaopay-button" target="_blank">
-                    카카오페이로 송금하기
-                </a>
-            </div>
-
-            <div class="divider">또는</div>
-
-            <!-- 계좌이체 섹션 -->
-            <div class="bank-section">
-                <button class="bank-button" onclick="toggleAccountInfo()">
-                    🏦 계좌이체
-                </button>
-                
-                <div id="accountInfo" class="account-info">
-                    <div class="account-detail">
-                        <label>은행</label>
-                        <div class="value">하나은행</div>
-                    </div>
-                    <div class="account-detail">
-                        <label>계좌번호</label>
-                        <div class="value">
-                            <span id="accountNumber">620-241128-571</span>
-                            <button class="copy-button" onclick="copyAccountNumber()">
-                                📋 복사
-                            </button>
-                        </div>
-                    </div>
-                    <div class="account-detail">
-                        <label>예금주</label>
-                        <div class="value">선웅규</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="steps">
-                <h4>📌 구매 후 안내</h4>
-                <ol>
-                    <li>카카오페이 송금 또는 계좌이체 완료</li>
-                    <li>아래 카카오톡 채널로 메시지 전송</li>
-                    <li>"입금완료 + 받으실 이메일 주소" 입력</li>
-                    <li>확인 후 10분 이내 PDF 링크 이메일 발송!</li>
-                </ol>
-            </div>
-
-            <div style="text-align: center; margin: 40px 0;">
-                <a href="http://pf.kakao.com/_WqSxcn/chat" 
-                   style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 18px 50px; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 50px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
-                   target="_blank">
-                    💬 카카오톡 채널로 문의하기
-                </a>
-            </div>
-
-            <div class="author">
-                <h3>✍️ 저자 소개</h3>
-                <p>
-                    안녕하세요, 써니(선웅규)입니다.<br>
-                    AI 도구를 실무에 활용하며 얻은 경험을 바탕으로<br>
-                    누구나 쉽게 따라할 수 있는 가이드를 만들었습니다.<br>
-                    여러분의 AI 여정을 응원합니다! 🚀
+    <!-- 가격 및 할인 행사 -->
+    <section class="price-section fade-in">
+        <div class="container">
+            <h2 style="font-size: 36px; color: #2C3E50; margin-bottom: 40px;">💰 추석 연휴 얼리버드 특별 할인</h2>
+            <div class="price-box">
+                <div style="font-size: 24px; color: #2C3E50; margin-bottom: 10px;">정가</div>
+                <div style="font-size: 32px; color: #95a5a6; text-decoration: line-through; margin-bottom: 20px;">₩9,990</div>
+                <div class="discount-badge" style="background: #D97757;">🌕 추석 연휴 특별 할인!</div>
+                <div class="sale-price" style="color: #D97757;">₩5,000</div>
+                <p style="color: #546E7A; font-size: 16px; margin-bottom: 15px;">
+                    ⏰ 10월 12일까지만 특별가!
                 </p>
+                <div id="countdown" style="background: #FFF3E0; padding: 15px; border-radius: 10px; margin-top: 20px;">
+                    <p style="font-weight: 700; color: #E67E22; margin-bottom: 5px;">⏱️ 할인 종료까지</p>
+                    <p id="timer" style="font-size: 24px; font-weight: 900; color: #D97757;"></p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="footer">
-            <p>Claude 완벽 가이드 | 2025</p>
-            <p style="font-size: 12px; margin-top: 10px; opacity: 0.8;">
-                문의: 카카오톡 채널
+    <!-- 구매자 혜택 3가지 -->
+    <section style="background: white; padding: 30px 20px;">
+        <div class="container">
+            <h3 style="text-align: center; color: #2C3E50; margin-bottom: 30px;">🎁 구매자 특별 혜택 - 3가지 애프터서비스</h3>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="background: #FFF8F3; padding: 35px; border-radius: 15px; border-left: 4px solid #D97757; margin-bottom: 25px;">
+                    <h3 style="color: #D97757; font-size: 22px; margin-bottom: 15px; font-weight: 700;">1. GitHub를 통해서 지속적 업데이트 버전 제공</h3>
+                    <p style="color: #2C3E50; line-height: 1.8; font-size: 16px;">
+                        Claude의 새 기능 추가 또는 수정사항 발생 시 GitHub를 통해 업데이트 버전을 제공합니다. 한번의 구매로 새로운 버전의 책을 계속 보관하고 있을 수 있습니다.
+                    </p>
+                </div>
+                <div style="background: #FFF8F3; padding: 35px; border-radius: 15px; border-left: 4px solid #D97757; margin-bottom: 25px;">
+                    <h3 style="color: #D97757; font-size: 22px; margin-bottom: 15px; font-weight: 700;">2. 카카오톡 채널을 통한 챗봇 및 저자와의 소통</h3>
+                    <p style="color: #2C3E50; line-height: 1.8; font-size: 16px; margin-bottom: 12px;">
+                        카카오톡 채널명: <strong>Claude World</strong> (ID: <strong style="background: #FAE100; color: #3C1E1E; padding: 2px 8px; border-radius: 4px;">@Claude</strong>)
+                    </p>
+                    <p style="color: #2C3E50; line-height: 1.8; font-size: 16px;">
+                        Claude 사용 중 독자들의 막히는 부분의 해결 요청과 AI 활용 관련 질문에 대해 AI 챗봇과 저자가 직접 답변합니다. 또한 Claude 및 웹개발 관련 유용한 정보를 수시로 제공합니다.
+                    </p>
+                </div>
+                <div style="background: #FFF8F3; padding: 35px; border-radius: 15px; border-left: 4px solid #D97757; margin-bottom: 25px;">
+                    <h3 style="color: #D97757; font-size: 22px; margin-bottom: 15px; font-weight: 700;">3. AI 활용 사업모델에 대한 무료 멘토링</h3>
+                    <p style="color: #2C3E50; line-height: 1.8; font-size: 16px;">
+                        저자가 스타트업 엑셀러레이터 경험을 기반으로 독자들이 구상한 AI 활용 사업모델에 대해서 원포인트 멘토링 서비스를 제공합니다. 위의 카카오톡 채널을 통해서 요청하면 됩니다.
+                    </p>
+                </div>
+                <div style="text-align: center; margin-top: 35px; padding: 25px; background: linear-gradient(135deg, #D97757 0%, #CC5634 100%); border-radius: 15px;">
+                    <p style="color: white; font-size: 18px; font-weight: 700; line-height: 1.6;">
+                        한번의 책 구매로 끝나는게 아니라<br>지속적으로 관계를 유지하면서 도움을 받을 수 있습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 저자 관련 간단 멘트 (표지에 나오는 것 그대로) -->
+    <section style="background: #F8F9FA; padding: 50px 20px; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p style="color: #2C3E50; font-size: 22px; font-weight: 700; line-height: 1.6;">
+                현직 공인회계사이자 스타트업 엑셀러레이터가<br>
+                5개월간 실제 사용경험을 통해서 만들었습니다.
             </p>
         </div>
-    </div>
+    </section>
+
+    <!-- 서문 보기 => 펼치기 -->
+    <section style="background: white; padding: 30px 20px;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- 서문 버튼 -->
+                <div style="background: linear-gradient(135deg, #4A90E2 0%, #2E5CB8 100%); padding: 25px; border-radius: 15px; margin-bottom: 20px; cursor: pointer; transition: transform 0.3s;" onclick="toggleSection('preface')" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <h3 style="color: white; font-size: 24px; margin: 0; text-align: center;">
+                        📄 서문 보기 <span style="font-size: 18px;">▼</span>
+                    </h3>
+                </div>
+
+                <div id="preface" style="display: none; background: #F8F9FA; padding: 40px; border-radius: 15px; margin-bottom: 30px; max-height: 600px; overflow-y: auto;">
+                    <div style="color: #2C3E50; line-height: 1.8; font-size: 15px;">
+                        <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #D97757;">2025년 5월부터 9월까지, 단 5개월 만에 저는 완전히 다른 사람이 되었습니다.</h3>
+                        <p style="margin-bottom: 15px;">5개월 전까지 저는 ChatGPT에게 간단한 질문을 해서 답변받는 정도로만 AI를 사용했습니다.</p>
+                        <p style="margin-bottom: 15px;">금년 5월에 AI 관련 스타트업을 운영하는 친한 후배의 소개로 Claude를 처음 알게 된 뒤부터, AI와 함께 20개 이상의 사업기획서를 작성하고 3건의 특허 출원을 했으며, 6개 이상의 시스템 설계서를 작성했습니다. AI를 활용해서 회계감사 업무를 해보았고 정치인의 선거 당선 가능성 지수 모델을 개발했으며 고객기업의 복잡한 법률문제 검토보고서를 작성했고, 거기에다 3권의 책을 1개월만에 만들었습니다.</p>
+                        <p style="margin-bottom: 20px;">이와 같이 할 수 있게 된 것의 핵심은 Claude, 특히 Claude Code를 활용하게 된 것입니다.</p>
+
+                        <h3 style="font-size: 20px; font-weight: 700; margin: 30px 0 20px 0; color: #D97757;">10년간의 갈증, 드디어 해결의 실마리를 찾다</h3>
+                        <p style="margin-bottom: 15px;">저는 현직 공인회계사이자 스타트업 엑셀러레이터입니다. 지난 2013년부터 2022년까지 10년 동안 기업지원서비스 거래 플랫폼, 스타트업 엑셀러레이터 플랫폼, 스타트업 지식제공 플랫폼이라는 3개 IT 플랫폼 개발에 도전했습니다.</p>
+                        <p style="margin-bottom: 15px;">이 3개의 플랫폼을 개발하기 위해서, 정부지원금을 5차례에 걸쳐 총 15억원 이상 받아서 자기부담금 수억원과 함께 투입했습니다. 하지만 원하는 결과가 만들어지지 않았습니다.</p>
+                        <p style="margin-bottom: 15px;">핵심 문제는 두 가지였습니다.<br>
+                        첫째, 개발자 문제였습니다. 개발자들이 제 의도를 정확히 이해하지 못했고, 창의적으로 접근하려는 의지가 부족했습니다.<br>
+                        둘째, 비용 문제였습니다. 예산의 한계로 충분한 인력을 투입할 수 없었습니다.</p>
+                        <p style="margin-bottom: 15px;">머릿속에는 분명한 청사진이 있는데, 그것을 현실로 만들어낼 수 없었습니다.<br>
+                        "내가 직접 개발을 할 수 있다면..." 이런 생각을 많이 했습니다.</p>
+                        <p style="margin-bottom: 20px;">그런데 Claude를 사용해보니 이건 단순한 도구가 아니었습니다. 제 의도를 정확히 이해하고 창의적 해결책을 제시하며, 제가 원하는 방향으로 함께 나아가는 진정한 협력자였습니다. 비용도 많이 들지 않았습니다. Claude와 함께라면 제가 원하는 것들을 직접 만들어낼 수 있겠다는 느낌이 들었습니다. 그래서 Claude를 더 깊이 파고들기 시작했습니다.</p>
+
+                        <h3 style="font-size: 20px; font-weight: 700; margin: 30px 0 20px 0; color: #D97757;">Claude 4종의 발견</h3>
+                        <p style="margin-bottom: 15px;"><strong>제가 발견한 Claude의 4가지 얼굴</strong></p>
+                        <p style="margin-bottom: 15px;">처음엔 당연히 모바일-앱부터 시작했습니다. 그런데 모바일-앱에서는 컨텍스트 한도가 금방 차버려서 작업을 이어서 계속 하기가 어려웠습니다.</p>
+                        <p style="margin-bottom: 15px;">해결 방법을 찾다가 데스크톱-앱을 알게 되었습니다. 내 컴퓨터의 로컬 파일에 자료를 저장해놓고 작업을 하면 컨텍스트 한도 문제가 해소될 수 있어서 데스크톱-앱으로 넘어갔습니다.</p>
+                        <p style="margin-bottom: 15px;">데스크톱-앱을 사용하다 보니 또 한계가 있었습니다. 여러가지 SW프로그램을 자유자재로 사용하려면 Claude Code가 필요하다는 걸 7월 중순에 알게 되었습니다.</p>
+                        <p style="margin-bottom: 15px;">그래서 Claude Code를 사용하게 되었고, 그 후 수정 작업을 쉽게 하기 위해서는 VS Code와 결합을 하면 된다는 걸 알게 되어 8월 27일에 Claude Code의 도움을 받아서 VS Code를 설치하고 이런저런 설정을 해서 결합 사용환경을 구축했습니다.</p>
+                        <p style="margin-bottom: 15px;">이렇게 모바일-앱에서 데스크톱-앱, Claude Code, VS Code까지 자연스럽게 넘어갔습니다. 약간의 시행착오 과정을 겪으면서 하나씩 차례차례 익혀나갔습니다.</p>
+
+                        <p style="margin-bottom: 15px;">그런데 많은 사람들이 모바일-앱만 써보고 Claude를 평가합니다. 가위만 써보고 다기능 공구를 평가하는 격입니다.</p>
+                        <p style="margin-bottom: 15px;"><strong>모바일-앱이 가위라면 Claude Code는 다기능 공구입니다.</strong></p>
+                        <p style="margin-bottom: 15px;">Claude에는 모바일-앱, 웹, 데스크톱-앱, Claude Code까지 4가지 다른 접근 방식이 있습니다. 각각이 서로 다른 세계를 열어줍니다.</p>
+                        <p style="margin-bottom: 15px;">그런데 Claude Code를 사용하는 사람은 많지가 않습니다.<br>
+                        "어떻게 설치해요?" "개발자만 쓰는 거 아닌가요?"<br>
+                        이런 질문을 합니다. 잘 모르고 있는 것입니다.</p>
+                        <p style="margin-bottom: 20px;">바로 이 Claude Code가 새로운 시대를 열고 있습니다.</p>
+
+                        <h3 style="font-size: 20px; font-weight: 700; margin: 30px 0 20px 0; color: #D97757;">새로운 패러다임: 모두가 코딩하는 시대</h3>
+                        <p style="margin-bottom: 15px;">AI 도구의 발전으로 코딩은 더 이상 소수 전문가만의 영역이 아닙니다. 모든 직군의 필수 도구가 되고 있습니다.</p>
+                        <p style="margin-bottom: 20px;">미래의 가장 중요한 스킬은 컴퓨터에게 정확히 원하는 것을 시키는 능력, 즉 코딩능력입니다. 직접 코드를 작성하는 것이 아니라, AI가 대신 코딩하도록 지시하는 것입니다. 코딩에 대한 이해를 가진 사람들이 AI를 통해 원하는 결과를 얻을 수 있습니다. 이것이 앞으로도 오랫동안 컴퓨터를 효과적으로 활용하는 최선의 방법이 될 것입니다.</p>
+
+                        <h3 style="font-size: 20px; font-weight: 700; margin: 30px 0 20px 0; color: #D97757;">Claude Code의 진짜 힘</h3>
+                        <p style="margin-bottom: 15px;">Claude Code는 우리가 컴퓨터로 할 수 있는 거의 모든 일을 대신 해줄 수 있습니다. 파일을 만들고, 저장하고, 읽고, 수정하는 것은 기본입니다.</p>
+                        <p style="margin-bottom: 15px;">자동화 워크플로우 구축, 웹페이지 제작, 각종 SW프로그램 설치까지도 Claude Code가 다 해줍니다. 자동화를 위해서 Make나 n8n 같은 도구를 별도로 배워서 사용하지 않아도 됩니다. Claude Code에게 시키면 자동화 스크립트를 만들어 줍니다.</p>
+                        <p style="margin-bottom: 15px;">ChatGPT, Gemini, Perplexity 중에 뭐가 더 나은지를 가지고 논쟁을 하는 것은 의미가 없습니다. Claude Code를 메인으로 두고, 나머지는 필요에 따라 Claude Code가 불러다 쓰도록 하면 됩니다. 이러면 통합 AI 작업환경이 만들어집니다.</p>
+                        <p style="margin-bottom: 15px;">성공한 프롬프트, 템플릿, 지침서, 작업 가이드는 물론 단축 명령문, 서브 에이전트 설정파일 등을 차곡차곡 내 컴퓨터에 저장하세요. 나만의 AI 시스템이 만들어집니다.</p>
+                        <p style="margin-bottom: 20px;">앞으로는 이런 경험 자산을 얼마나 체계적으로 쌓아놓느냐에 따라 고수와 하수가 나뉩니다. 고수는 이런 것들을 활용해서 단 몇 마디만으로도 AI가 엄청난 일을 하도록 만들 수 있을 것입니다.</p>
+
+                        <h3 style="font-size: 20px; font-weight: 700; margin: 30px 0 20px 0; color: #D97757;">저는 현재 열심히 공부하고 있습니다</h3>
+                        <p style="margin-bottom: 15px;">저는 지금 Claude를 중심으로 한 AI를 활용해서 추진하는 여러개의 시스템 개발 프로젝트를 진행하고 있습니다.</p>
+                        <p style="margin-bottom: 15px;">회계/금융 분야에서는 기업가치평가 시스템(VALUATION.AI), 기장업무 입출력 자동화 시스템(BKIO.AI), 회계감사 AI 활용 솔루션, 주식 파생상품 매수타임 알림 시스템 등을 개발하려고 합니다.</p>
+                        <p style="margin-bottom: 15px;">일반 비즈니스 분야에서는 디지털북 분산형 판매시스템(DBOK.SHOP), AI 에이전트 분산형 판매시스템(AIAGT.SHOP), 음식점용 분산형 플랫폼(DINING524.NET), 그리고 50개 이상의 온라인 커뮤니티의 개발을 준비하고 있습니다.</p>
+                        <p style="margin-bottom: 15px;">이것들을 개발하기 위해서 저는 계속 공부를 하고 있습니다. 공부를 체계적으로 하기 위해 책을 만들기로 결심하였습니다. 책을 만드는 과정에서 필요한 지식을 체계적으로 정리하면서 완전하게 이해하게 되고, 그 내용을 다른 사람들에게 공유할 수 있습니다.</p>
+                        <p style="margin-bottom: 20px;">8월 말부터 한 달간 3권의 책을 병행해서 만들었습니다. Claude와 협업을 했는데, 저는 프롬프터 역할을 하고 Claude가 집필을 했습니다. 작성지침을 만들고, 목차를 구성하고, 각 장에 무엇을 넣을지 하나하나 단계별로 서로 논의하며 진행했습니다.</p>
+
+                        <p style="margin-bottom: 15px;">첫 번째 책이 바로 이것 『Claude 설치부터 기본 사용까지 완벽 가이드』입니다.<br>
+                        가이드가 있으면 시행착오를 줄일 수 있고 걱정도 없어집니다. 사람들이 Claude Code나 VS Code 설치를 계속 미루는 것을 보면 안타깝습니다. 실제로는 정말 간단한 과정인데 말입니다. 이 책을 통해서 걱정 없이 손쉽게 할 수 있는 방법을 마련했습니다. 기본적인 사용을 시작해야만 그 다음 활용이 가능해집니다.</p>
+                        <p style="margin-bottom: 15px;">두 번째 책은 『Claude & Claude Code 활용 기초지식』입니다.<br>
+                        Claude와 Claude Code를 활용하려면 기초적인 내용을 알아야 합니다. 어떤 기능들이 있는지, 어떻게 활용하는지에 대해서 상세하게 정리했습니다.</p>
+                        <p style="margin-bottom: 20px;">세 번째 책은 『웹 개발 기초지식』입니다.<br>
+                        업무 자동화와 지능화를 위해서는 결국 웹사이트가 필요합니다. Claude와 대화하며 웹사이트를 만들려면 기본 용어와 개념을 알아야만 합니다.</p>
+
+                        <p style="margin-bottom: 20px;">위의 3권의 책은 서로 연결된 하나의 커리큘럼입니다. 첫 번째 책으로 기본 도구를 갖추고, 두 번째 책으로 기본 도구 활용능력을 키우고, 세 번째 책으로 실전 개발 프로젝트의 추진 준비를 하는 단계별 성장 과정입니다.</p>
+
+                        <h3 style="font-size: 20px; font-weight: 700; margin: 30px 0 20px 0; color: #D97757;">이 책의 차별점</h3>
+                        <p style="margin-bottom: 15px;"><strong>Claude 4종과 VS Code를 단계적으로, 한번에, 완전하게 설치하는 종합 가이드는 국내에 현재까지는 이 책이 유일합니다.</strong></p>
+                        <p style="margin-bottom: 15px;">이 책 하나로:<br>
+                        • Claude 모바일-앱, 웹, 데스크톱-앱, Code<br>
+                        • Node.js, Git, Python 등 필수 프로그램<br>
+                        • MCP 서버 3종 연결<br>
+                        • VS Code와 결합<br>
+                        • 모든 것을 7단계로 설치하고 사용 시작</p>
+                        <p style="margin-bottom: 20px;">제가 5개월간 하나씩 설치하고 사용하면서 관련 내용을 정리했습니다. 흩어진 정보를 찾아 헤매지 마세요. 이 책에 모두 정리해두었습니다.</p>
+
+                        <h3 style="font-size: 20px; font-weight: 700; margin: 30px 0 20px 0; color: #D97757;">왜 Claude인가</h3>
+                        <p style="margin-bottom: 15px;">제가 Claude를 메인으로 정한 이유는 다음과 같습니다.</p>
+                        <p style="margin-bottom: 15px;"><strong>첫째, Claude는 신사적이고 협력적입니다.</strong><br>
+                        잘못을 지적하면 바로 인정하고 수용합니다. 고집 부리지 않고 함께 개선해나갑니다.</p>
+                        <p style="margin-bottom: 15px;"><strong>둘째, Anthropic의 사업 철학과 방식이 좋습니다.</strong><br>
+                        안전하면서도 유용한 AI, B2B 중심의 사업 전략, 실무자를 위한 도구 개발 등이 좋습니다.</p>
+                        <p style="margin-bottom: 15px;"><strong>셋째, 접근방식별 연계성이 뛰어납니다.</strong><br>
+                        모바일-앱 → 데스크톱-앱 → Claude Code로 대화와 작업이 자연스럽게 이어집니다.</p>
+                        <p style="margin-bottom: 20px;">다른 생성형 AI들과 Claude는 다릅니다. 업무를 개선하고 시스템을 만들려는 진지한 의도와 사업적 목적을 가진 사람들이 주로 사용합니다.</p>
+
+                        <h3 style="font-size: 20px; font-weight: 700; margin: 30px 0 20px 0; color: #D97757;">지금 시작해야 하는 이유</h3>
+                        <p style="margin-bottom: 15px;">Claude가 지속적으로 빠르게 진화하고 있습니다.</p>
+                        <p style="margin-bottom: 15px;"><strong>2025년 8월:</strong> Opus 4.1 출시<br>
+                        <strong>2025년 9월:</strong> Opus 4.5 출시<br>
+                        <strong>2025년 11월:</strong> 새로운 모델 출시 예정</p>
+                        <p style="margin-bottom: 15px;">불과 2개월 만에 또 새로운 모델이 나옵니다. 제가 처음 시작했을 때보다 지금 Claude는 훨씬 강력해졌습니다. 5개월 후엔 지금보다 훨씬 더 발전해 있을 것입니다.</p>
+                        <p style="margin-bottom: 15px;">지금 시작하는 사람과 5개월 후 시작하는 사람의 격차는 단순히 5개월이 아닙니다.</p>
+                        <p style="margin-bottom: 20px;">더 늦기 전에 시작하세요.</p>
+
+                        <h3 style="font-size: 20px; font-weight: 700; margin: 30px 0 20px 0; color: #D97757;">앞으로 5개월 후, 여러분의 모습</h3>
+                        <p style="margin-bottom: 15px;">2026년 구정, 여러분은 두 가지 모습 중 하나가 될 것입니다.</p>
+                        <p style="margin-bottom: 15px;">여전히 "Claude가 뭐야?" "어떻게 설치해?"라고 물으며 남들이 만든 시스템을 구경만 하는 사람.</p>
+                        <p style="margin-bottom: 15px;">또는 자기 전문 분야에서 Claude를 활용해 업무를 자동화하고 지능화하며, 혁신을 통해 새로운 가치를 만들어내는 사람.</p>
+                        <p style="margin-bottom: 15px;">지금 이 순간이 갈림길입니다.</p>
+                        <p style="margin-bottom: 20px;"><strong>이 책 한 권, 3시간 투자. 여기서부터 시작입니다.</strong></p>
+
+                        <p style="margin-bottom: 15px;">이 책은 이런 분들을 위한 것입니다:<br>
+                        • 개발자 없이도 시스템을 만들고 싶은 마이크로 창업가<br>
+                        • 자기 전문 분야에 AI를 적용하고 싶은 전문가<br>
+                        • AI를 활용해 부수입을 만들고 싶은 프리랜서<br>
+                        • 업무를 자동화해서 시간을 아끼고 싶은 직장인<br>
+                        • Claude는 들어봤지만 어떻게 시작할지 모르는 초보자</p>
+                        <p style="margin-bottom: 15px;">개발 경험이 없어도 괜찮습니다. 저도 비개발자입니다.</p>
+                        <p style="margin-bottom: 20px;">지금도 저는 계속 공부하고 있습니다. 여전히 시행착오를 겪고, 매일 새로운 것을 배웁니다. 하지만 이미 시작했고, 경험을 쌓아가고 있습니다.</p>
+
+                        <h3 style="margin: 30px 0 20px 0; color: #D97757;">구매자 특별 혜택 - 3가지 애프터서비스</h3>
+                        <p style="margin-bottom: 15px;"><strong>1. GitHub를 통해서 지속적 업데이트 버전 제공</strong><br>
+                        Claude의 새 기능 추가 또는 수정사항 발생 시 GitHub를 통해 업데이트 버전을 제공합니다. 한번의 구매로 새로운 버전의 책을 계속 보관하고 있을 수 있습니다.</p>
+                        <p style="margin-bottom: 15px;"><strong>2. 카카오톡 채널을 통한 챗봇 및 저자와의 소통</strong><br>
+                        카카오톡 채널명: Claude World (ID: @Claude)<br>
+                        Claude 사용 중 독자들의 막히는 부분의 해결 요청과 AI 활용 관련 질문에 대해 AI 챗봇과 저자가 직접 답변합니다. 또한 Claude 및 웹개발 관련 유용한 정보를 수시로 제공합니다.</p>
+                        <p style="margin-bottom: 20px;"><strong>3. AI 활용 사업모델에 대한 무료 멘토링</strong><br>
+                        저자가 스타트업 엑셀러레이터 경험을 기반으로 독자들이 구상한 AI 활용 사업모델에 대해서 원포인트 멘토링 서비스를 제공합니다. 위의 카카오톡 채널을 통해서 요청하면 됩니다.</p>
+
+                        <p style="text-align: center; margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #D97757 0%, #CC5634 100%); border-radius: 10px; color: white; font-weight: 600;">
+                            Claude와 함께, 당신만의 AI 혁명을 시작하세요.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 목차 보기 => 펼치기 -->
+    <section style="background: #F8F9FA; padding: 30px 20px;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- 목차 버튼 -->
+                <div style="background: linear-gradient(135deg, #27AE60 0%, #229954 100%); padding: 25px; border-radius: 15px; margin-bottom: 20px; cursor: pointer; transition: transform 0.3s;" onclick="toggleSection('toc')" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <h3 style="color: white; font-size: 24px; margin: 0; text-align: center;">
+                        📚 목차 보기 <span style="font-size: 18px;">▼</span>
+                    </h3>
+                </div>
+
+                <div id="toc" style="display: none;">
+                    <div style="background: #FFF8F3; padding: 40px; border-radius: 15px; border-left: 5px solid #D97757; margin-bottom: 30px;">
+                        <h3 style="color: #D97757; font-size: 24px; margin-bottom: 20px;">제1부: Claude 4종 & VS Code의 설치 및 사용 가이드</h3>
+                        <ul style="color: #546E7A; line-height: 2.0; padding-left: 20px; list-style: none;">
+                            <li style="font-weight: 600; color: #2C3E50;">1단계: Claude 모바일-앱 설치 및 시작</li>
+                            <li style="font-weight: 600; color: #2C3E50;">2단계: Claude 웹 설치 및 시작</li>
+                            <li style="font-weight: 600; color: #2C3E50;">3단계: Claude 데스크톱-앱 설치 및 시작</li>
+                            <li style="font-weight: 600; color: #2C3E50;">4단계: 기본적인 공통 프로그램의 설치</li>
+                            <li style="font-weight: 600; color: #2C3E50;">5단계: Claude Code 설치 및 시작</li>
+                            <li style="font-weight: 600; color: #2C3E50;">6단계: Claude 데스크톱-앱에 MCP 연결하기 (Claude Code 활용)</li>
+                            <li style="font-weight: 600; color: #2C3E50;">7단계: VS Code 설치 및 시작</li>
+                            <li style="margin-top: 15px;">부록</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #FFF8F3; padding: 40px; border-radius: 15px; border-left: 5px solid #D97757; margin-bottom: 30px;">
+                        <h3 style="color: #D97757; font-size: 24px; margin-bottom: 20px;">제2부: Claude 사용료 과금 체계 및 토큰 사용량 절감 방안</h3>
+                        <ul style="color: #546E7A; line-height: 2.0; padding-left: 20px; list-style: none;">
+                            <li style="font-weight: 600; color: #2C3E50;">1. 요금제 종류 (6가지)</li>
+                            <li style="font-weight: 600; color: #2C3E50;">2. 5시간 리셋 시스템</li>
+                            <li style="font-weight: 600; color: #2C3E50;">3. 토큰과 토큰 사용료</li>
+                            <li style="font-weight: 600; color: #2C3E50;">4. 토큰 사용량 절감 방안 9가지</li>
+                            <li style="font-weight: 600; color: #2C3E50;">5. 자주 묻는 질문 (FAQ)</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #FFF8F3; padding: 40px; border-radius: 15px; border-left: 5px solid #D97757;">
+                        <h3 style="color: #D97757; font-size: 24px; margin-bottom: 20px;">제3부: Anthropic과 Claude의 이해</h3>
+                        <ul style="color: #546E7A; line-height: 2.0; padding-left: 20px; list-style: none;">
+                            <li style="font-weight: 600; color: #2C3E50;">1. Anthropic의 창업</li>
+                            <li style="font-weight: 600; color: #2C3E50;">2. Claude의 탄생과 진화</li>
+                            <li style="font-weight: 600; color: #2C3E50;">3. 회사 성장과 투자 유치</li>
+                            <li style="font-weight: 600; color: #2C3E50;">4. Claude 3가지 모델 체계의 분석</li>
+                            <li style="font-weight: 600; color: #2C3E50;">5. 4가지 접근방식의 이해</li>
+                            <li style="font-weight: 600; color: #2C3E50;">6. 회사의 사업 전략, 핵심 기술 및 한계점</li>
+                            <li style="font-weight: 600; color: #2C3E50;">7. 경쟁 분석과 시장 포지셔닝</li>
+                            <li style="font-weight: 600; color: #2C3E50;">8. 한국 시장 진출 전략</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 구매 섹션 -->
+    <section class="purchase fade-in" id="purchase">
+        <div class="purchase-box">
+            <h3 style="text-align: center;">🎯 지금 바로 시작하세요!</h3>
+
+            <!-- Step 1: 결제 방법 선택 -->
+            <div id="step1" class="step active">
+                <div class="info-box">
+                    <p style="font-weight: 600; color: #E67E22; margin-bottom: 10px;">🌕 추석 연휴 얼리버드 특별 할인 10월 12일 23:59 종료</p>
+                    <p style="text-align: center; font-size: 28px; font-weight: 900; color: #D97757; margin: 15px 0;">
+                        <span style="text-decoration: line-through; font-size: 18px; color: #95a5a6;">₩9,990</span>
+                        → ₩5,000
+                    </p>
+                    <p>아래 버튼을 클릭하면 카카오페이 송금 링크가 열립니다.</p>
+                </div>
+
+                <!-- 결제 방법 3가지 -->
+                <button class="btn btn-kakaopay" onclick="selectKakaoPay()">
+                    💰 카카오페이 송금
+                </button>
+
+                <button class="btn" style="background: #4A90E2; color: white; margin-bottom: 15px;" onclick="selectBankTransfer()">
+                    🏦 계좌 이체
+                </button>
+
+                <button class="btn" style="background: #E0E0E0; color: #7f8c8d; margin-bottom: 15px;" onclick="selectCreditCard()">
+                    💳 산용카드 결제 (준비 중)
+                </button>
+            </div>
+
+            <!-- Step 2-1: 카카오페이 송금 상세 -->
+            <div id="step2-kakaopay" class="step">
+                <div class="info-box">
+                    <p style="font-weight: 700; font-size: 18px; color: #2C3E50; margin-bottom: 15px;">
+                        💰 카카오페이 송금
+                    </p>
+                    <p><strong>송금 금액:</strong> ₩5,000</p>
+                    <p><strong>받는 사람:</strong> 선웅규</p>
+                </div>
+                <button class="btn btn-kakaopay" onclick="openKakaoPay()">
+                    💰 카카오페이 송금 링크
+                </button>
+                <button class="btn btn-primary" onclick="showEmailStep()">
+                    이메일 주소 입력하기
+                </button>
+                <button class="btn back-btn" onclick="showStep1()">
+                    ← 결제 방법 다시 선택
+                </button>
+            </div>
+
+            <!-- Step 2-2: 계좌 이체 상세 -->
+            <div id="step2-bank" class="step">
+                <div class="info-box">
+                    <p style="font-weight: 700; font-size: 18px; color: #2C3E50; margin-bottom: 15px;">
+                        🏦 계좌 이체
+                    </p>
+                    <p><strong>입금 금액:</strong> ₩5,000</p>
+                    <p style="margin-top: 15px;">
+                        <strong style="color: #4A90E2; font-size: 20px;">하나은행 620-241128-571</strong><br>
+                        <span style="font-size: 16px; color: #2C3E50; font-weight: 600;">예금주: 선웅규</span>
+                    </p>
+                </div>
+                <button class="btn btn-primary" onclick="copyBankAccount()">
+                    📋 계좌번호 복사하기
+                </button>
+                <button class="btn btn-primary" onclick="showEmailStep()">
+                    이메일 주소 입력하기
+                </button>
+                <button class="btn back-btn" onclick="showStep1()">
+                    ← 결제 방법 다시 선택
+                </button>
+            </div>
+
+            <!-- Step 2-3: 신용카드 결제 (준비 중) -->
+            <div id="step2-credit" class="step">
+                <div style="background: #FFF3E0; padding: 40px; border-radius: 15px; text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 64px; margin-bottom: 20px;">🚧</div>
+                    <h3 style="color: #E67E22; font-size: 24px; margin-bottom: 20px;">서비스 준비 중입니다</h3>
+                    <p style="color: #546E7A; line-height: 1.8; font-size: 16px;">
+                        토스페이먼츠 연동 작업을 진행하고 있습니다.<br>
+                        빠른 시일 내에 서비스를 제공하겠습니다.
+                    </p>
+                    <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #FFE0B2; color: #7f8c8d; font-size: 14px;">
+                        현재는 <strong>카카오페이 송금</strong> 또는 <strong>계좌 이체</strong>를 이용해주세요.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="showStep1()">
+                    ← 결제 방법 다시 선택
+                </button>
+            </div>
+
+            <!-- Step 3: 이메일 입력 -->
+            <div id="step3" class="step">
+                <div class="info-box">
+                    <p style="font-weight: 700; font-size: 18px; color: #2C3E50; margin-bottom: 15px;">
+                        📧 Digital Book(PDF) 받을 이메일 주소 입력하기
+                    </p>
+                    <p>입력하신 이메일로 즉시 PDF 파일을 보내드립니다.</p>
+                </div>
+                <div class="input-group">
+                    <label for="email">이메일 주소</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+                </div>
+                <div class="input-group">
+                    <label for="name">이름</label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="홍길동"
+                    >
+                </div>
+                <button class="btn btn-primary" id="sendBtn" onclick="sendEmail()">
+                    📩 이메일 주소 등록하기
+                </button>
+                <button class="btn back-btn" onclick="showStep1()">
+                    ← 결제 방법 다시 선택
+                </button>
+            </div>
+
+            <!-- Step 4: 완료 -->
+            <div id="step4" class="step">
+                <div class="success-box">
+                    <div class="success-icon">✅</div>
+                    <h3 style="color: #2e7d32; margin-bottom: 15px; font-size: 24px;">전송 완료!</h3>
+                    <p style="color: #546E7A; line-height: 1.8;">
+                        <strong id="sentEmail"></strong>로<br>
+                        다운로드 링크를 보내드렸습니다.<br><br>
+                        이메일을 확인해주세요! 📧
+                    </p>
+                    <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #c8e6c9; font-size: 14px; color: #7f8c8d;">
+                        ℹ️ 이메일이 오지 않았다면 스팸함을 확인해주세요.<br>
+                        문의: 카카오톡 채널 <strong>@claude</strong>
+                    </p>
+                </div>
+                <a href="http://pf.kakao.com/_WqSxcn/chat" target="_blank">
+                    <button class="btn btn-kakaopay" style="margin-top: 20px;">
+                        💬 카카오톡 채널로 문의하기
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 마지막 CTA 섹션 -->
+    <section style="background: linear-gradient(135deg, #27AE60 0%, #229954 100%); padding: 35px 20px; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p style="color: white; font-size: 28px; font-weight: 700; line-height: 1.5; margin-bottom: 30px;">
+                "지금 시작하는 사람과 5개월 후 시작하는 사람의 격차는<br>단순히 5개월이 아닙니다."
+            </p>
+            <a href="#purchase" style="text-decoration: none;">
+                <button style="background: linear-gradient(135deg, #D97757 0%, #CC5634 100%); color: white; padding: 25px 60px; border: none; border-radius: 15px; font-size: 24px; font-weight: 700; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    지금 바로 구매하기 →
+                </button>
+            </a>
+            <p style="color: #BDC3C7; font-size: 16px; margin-top: 25px;">
+                🌕 추석 연휴 얼리버드 특별 할인 10월 12일 23:59 종료
+            </p>
+        </div>
+    </section>
 
     <script>
-        function toggleAccountInfo() {
-            const accountInfo = document.getElementById('accountInfo');
-            accountInfo.classList.toggle('show');
+        function showStep1() {
+            hideAllSteps();
+            document.getElementById('step1').classList.add('active');
         }
 
-        function copyAccountNumber() {
-            const accountNumber = document.getElementById('accountNumber').textContent;
-            const button = event.target;
-            
-            navigator.clipboard.writeText(accountNumber).then(() => {
-                button.textContent = '✓ 복사완료!';
-                button.classList.add('copied');
-                
-                setTimeout(() => {
-                    button.textContent = '📋 복사';
-                    button.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                alert('계좌번호: ' + accountNumber);
+        function selectKakaoPay() {
+            hideAllSteps();
+            document.getElementById('step2-kakaopay').classList.add('active');
+        }
+
+        function selectBankTransfer() {
+            hideAllSteps();
+            document.getElementById('step2-bank').classList.add('active');
+        }
+
+        function selectCreditCard() {
+            hideAllSteps();
+            document.getElementById('step2-credit').classList.add('active');
+        }
+
+        function showEmailStep() {
+            hideAllSteps();
+            document.getElementById('step3').classList.add('active');
+            document.getElementById('email').focus();
+        }
+
+        function hideAllSteps() {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
             });
         }
+
+        function openKakaoPay() {
+            // 카카오페이 송금 링크를 새 탭으로 열기
+            window.open('https://qr.kakaopay.com/Ej8qUBxLx', '_blank');
+        }
+
+        function copyBankAccount() {
+            // 계좌번호 복사
+            const accountNumber = '620-241128-571';
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(accountNumber).then(() => {
+                    alert('📋 계좌번호가 복사되었습니다!\n\n하나은행 ' + accountNumber);
+                });
+            } else {
+                // 구형 브라우저 대응
+                alert('📋 계좌번호\n\n하나은행 ' + accountNumber + '\n예금주: 선웅규\n\n(수동으로 복사해주세요)');
+            }
+        }
+
+        async function sendEmail() {
+            const email = document.getElementById('email').value.trim();
+            const name = document.getElementById('name').value.trim();
+
+            // 이메일 검증
+            if (!email) {
+                alert('📧 이메일 주소를 입력해주세요!');
+                document.getElementById('email').focus();
+                return;
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('📧 올바른 이메일 주소를 입력해주세요!');
+                document.getElementById('email').focus();
+                return;
+            }
+
+            // 버튼 비활성화 및 로딩 표시
+            const sendBtn = document.getElementById('sendBtn');
+            const originalText = sendBtn.innerHTML;
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<span class="loading"></span> 전송 중...';
+
+            try {
+                // API 호출
+                const response = await fetch('/api/send-download', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        name: name || '고객님'
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    // 성공
+                    document.getElementById('sentEmail').textContent = email;
+                    hideAllSteps();
+                    document.getElementById('step4').classList.add('active');
+                } else {
+                    // 실패
+                    throw new Error(result.error || '전송 실패');
+                }
+            } catch (error) {
+                console.error('전송 오류:', error);
+                alert('❌ 전송 중 오류가 발생했습니다.\n\n카카오톡 채널로 문의해주세요:\n이메일 주소: ' + email);
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = originalText;
+            }
+        }
+
+        // 서문/목차 토글 함수
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section.style.display === 'none' || section.style.display === '') {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+        }
+
+        // 카운트다운 타이머
+        function updateCountdown() {
+            const endDate = new Date('2025-10-12T23:59:59+09:00'); // 10월 12일 23:59:59 KST
+            const now = new Date();
+            const diff = endDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('timer').innerHTML = '할인 종료';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').innerHTML =
+                `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
+        }
+
+        // 이메일 입력 시 엔터키로 전송
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('email');
+            if (emailInput) {
+                emailInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendEmail();
+                    }
+                });
+            }
+
+            // 카운트다운 시작
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // 스크롤 애니메이션
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach((el) => {
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
 </html>
