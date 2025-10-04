@@ -78,7 +78,7 @@ export default async function handler(req, res) {
                         <h3 style="color: #2e7d32; margin-bottom: 15px;">🎁 구매자 특별 혜택</h3>
                         <ul style="color: #546E7A; line-height: 1.8; padding-left: 20px;">
                             <li>GitHub를 통해서 지속적 업데이트 버전 제공</li>
-                            <li>카카오톡 채널을 통한 챗봇 및 저자와의 소통</li>
+                            <li>카카오톡 채널 "AI실전활용연구소"를 통한 챗봇 및 저자와의 소통</li>
                             <li>AI 활용 사업모델에 대한 무료 멘토링</li>
                         </ul>
                     </div>
@@ -86,8 +86,11 @@ export default async function handler(req, res) {
                     <div style="text-align: center; padding: 20px; border-top: 2px solid #e0e0e0;">
                         <p style="color: #7f8c8d; font-size: 14px; margin-bottom: 10px;">문의사항이 있으시면 언제든 연락주세요!</p>
                         <a href="http://pf.kakao.com/_WqSxcn/chat" style="display: inline-block; background: #FEE500; color: #3C1E1E; padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: 700; margin-top: 10px;">
-                            💬 카카오톡 채널로 문의하기
+                            💬 카카오톡 채널 "AI실전활용연구소"로 문의하기
                         </a>
+                        <p style="color: #999; font-size: 12px; margin-top: 15px;">
+                            링크: <a href="http://pf.kakao.com/_WqSxcn/chat" style="color: #1976d2;">http://pf.kakao.com/_WqSxcn/chat</a>
+                        </p>
                     </div>
 
                     <div style="text-align: center; padding: 20px; font-size: 12px; color: #999;">
