@@ -46,9 +46,11 @@ export default async function handler(req, res) {
                 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                     <div style="text-align: center; margin-bottom: 40px;">
                         <div style="margin-bottom: 20px;">
-                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block;">
-                                <rect width="24" height="24" rx="4" fill="#D97757"/>
-                                <path d="M7 8h10M7 12h10M7 16h7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <svg width="120" height="120" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block;">
+                                <rect width="200" height="200" rx="20" fill="#D97757"/>
+                                <path d="M100 60C85.86 60 74.29 71.57 74.29 85.71V114.29C74.29 128.43 85.86 140 100 140C114.14 140 125.71 128.43 125.71 114.29V85.71C125.71 71.57 114.14 60 100 60Z" fill="white"/>
+                                <circle cx="100" cy="85" r="8" fill="#D97757"/>
+                                <circle cx="100" cy="115" r="8" fill="#D97757"/>
                             </svg>
                         </div>
                         <h1 style="color: #2C3E50; margin-bottom: 10px;">${name || '고객'}님, 구매해주셔서 감사합니다!</h1>
