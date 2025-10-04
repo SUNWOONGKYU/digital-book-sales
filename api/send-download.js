@@ -1,12 +1,13 @@
 /**
- * 간소화된 다운로드 링크 발송 API
+ * PDF 직접 첨부 발송 API
  * POST /api/send-download
  *
- * 이메일 주소를 받아서 PDF 다운로드 링크를 즉시 발송
- * 입금 확인 절차 없이 프로세스로 통제
+ * 이메일 주소를 받아서 PDF 파일을 직접 첨부하여 발송
  */
 
 import nodemailer from 'nodemailer';
+import fs from 'fs';
+import path from 'path';
 
 export default async function handler(req, res) {
     // POST 요청만 허용
@@ -25,9 +26,6 @@ export default async function handler(req, res) {
     }
 
     try {
-        // PDF 다운로드 링크 (Google Drive 공유 링크)
-        const downloadLink = process.env.PDF_DOWNLOAD_LINK || 'https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing';
-
         // Gmail SMTP 설정
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -36,6 +34,9 @@ export default async function handler(req, res) {
                 pass: process.env.GMAIL_APP_PASSWORD
             }
         });
+
+        // PDF 파일 경로
+        const pdfPath = path.join(process.cwd(), '판매용PDF', 'Claude_설치와사용_완벽가이드_v1.0.pdf');
 
         // 이메일 내용
         const mailOptions = {
@@ -51,19 +52,15 @@ export default async function handler(req, res) {
                     </div>
 
                     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; text-align: center;">
-                        <h2 style="margin-bottom: 20px; font-size: 24px;">📥 PDF 다운로드</h2>
-                        <a href="${downloadLink}" style="display: inline-block; background: white; color: #667eea; padding: 15px 40px; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 18px;">
-                            PDF 다운로드하기
-                        </a>
-                        <div style="margin-top: 20px; font-size: 14px; opacity: 0.9;">
-                            <p>⚠️ 이 링크를 북마크해두시면 언제든 다시 다운로드 가능합니다</p>
-                        </div>
+                        <h2 style="margin-bottom: 15px; font-size: 24px;">📎 PDF 파일 첨부</h2>
+                        <p style="font-size: 16px; opacity: 0.95;">이 이메일에 PDF 파일이 첨부되어 있습니다.</p>
+                        <p style="font-size: 14px; margin-top: 15px; opacity: 0.9;">📥 첨부파일을 다운로드하여 바로 이용하실 수 있습니다</p>
                     </div>
 
                     <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
                         <h3 style="color: #2C3E50; margin-bottom: 15px;">📋 구매 내역</h3>
                         <p style="color: #546E7A; margin: 8px 0;"><strong>이메일:</strong> ${email}</p>
-                        <p style="color: #546E7A; margin: 8px 0;"><strong>결제금액:</strong> ₩9,900</p>
+                        <p style="color: #546E7A; margin: 8px 0;"><strong>결제금액:</strong> ₩5,000</p>
                         <p style="color: #546E7A; margin: 8px 0;"><strong>구매일시:</strong> ${new Date().toLocaleString('ko-KR')}</p>
                     </div>
 
@@ -80,18 +77,10 @@ export default async function handler(req, res) {
                     <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
                         <h3 style="color: #2e7d32; margin-bottom: 15px;">🎁 구매자 특별 혜택</h3>
                         <ul style="color: #546E7A; line-height: 1.8; padding-left: 20px;">
-                            <li>평생 무료 업데이트 (새 버전 출시 시 자동 제공)</li>
-                            <li>카카오톡 채널 1:1 지원</li>
-                            <li>AI 활용 노하우 무료 멘토링</li>
+                            <li>GitHub를 통해서 지속적 업데이트 버전 제공</li>
+                            <li>카카오톡 채널을 통한 챗봇 및 저자와의 소통</li>
+                            <li>AI 활용 사업모델에 대한 무료 멘토링</li>
                         </ul>
-                    </div>
-
-                    <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                        <h3 style="color: #856404; margin-bottom: 15px;">⚠️ 환불 정책</h3>
-                        <p style="color: #856404; line-height: 1.8;">
-                            전자상거래법에 따라 구매일로부터 <strong>7일 이내</strong> 환불 요청 가능합니다.<br>
-                            환불 요청은 카카오톡 채널로 문의해주세요.
-                        </p>
                     </div>
 
                     <div style="text-align: center; padding: 20px; border-top: 2px solid #e0e0e0;">
@@ -102,11 +91,17 @@ export default async function handler(req, res) {
                     </div>
 
                     <div style="text-align: center; padding: 20px; font-size: 12px; color: #999;">
-                        <p>이 이메일은 구매 확인 및 다운로드 링크 제공을 위한 자동 발송 메일입니다.</p>
+                        <p>이 이메일은 구매 확인 및 PDF 제공을 위한 자동 발송 메일입니다.</p>
                         <p>받는 사람: ${email}</p>
                     </div>
                 </div>
-            `
+            `,
+            attachments: [
+                {
+                    filename: 'Claude_설치와사용_완벽가이드_v1.0.pdf',
+                    path: pdfPath
+                }
+            ]
         };
 
         // 이메일 발송
@@ -115,7 +110,7 @@ export default async function handler(req, res) {
         // 성공 응답
         return res.status(200).json({
             success: true,
-            message: '다운로드 링크가 이메일로 발송되었습니다.',
+            message: 'PDF 파일이 이메일로 발송되었습니다.',
             email: email
         });
 
