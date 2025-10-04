@@ -45,7 +45,12 @@ export default async function handler(req, res) {
             html: `
                 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                     <div style="text-align: center; margin-bottom: 40px;">
-                        <div style="font-size: 60px; margin-bottom: 20px;">🤖</div>
+                        <div style="margin-bottom: 20px;">
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block;">
+                                <rect width="24" height="24" rx="4" fill="#D97757"/>
+                                <path d="M7 8h10M7 12h10M7 16h7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
                         <h1 style="color: #2C3E50; margin-bottom: 10px;">${name || '고객'}님, 구매해주셔서 감사합니다!</h1>
                         <p style="color: #7f8c8d; font-size: 16px;">Claude 완벽 가이드를 구매해주셔서 진심으로 감사드립니다.</p>
                     </div>
@@ -66,21 +71,23 @@ export default async function handler(req, res) {
                         <p style="color: #546E7A; margin: 8px 0;"><strong>구매일시:</strong> ${new Date().toLocaleString('ko-KR')}</p>
                     </div>
 
-                    <div style="background: #e3f2fd; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                        <h3 style="color: #1976d2; margin-bottom: 15px;">💡 가이드 활용 팁</h3>
-                        <ul style="color: #546E7A; line-height: 1.8; padding-left: 20px;">
-                            <li>차례를 먼저 확인하고 필요한 부분부터 읽어보세요</li>
-                            <li>설치 과정은 단계별로 천천히 따라해보세요</li>
-                            <li>MCP 연결 가이드는 꼭 읽어보세요!</li>
-                            <li>토큰 절약 노하우는 실전에서 큰 도움이 됩니다</li>
-                        </ul>
+                    <div style="background: #e3f2fd; padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #1976d2;">
+                        <p style="color: #546E7A; line-height: 1.8; font-size: 16px; margin-bottom: 15px;">
+                            ChatGPT 등 여러 AI를 API로 연결해서 활용하고, 개발 주도권을 확실하게 본인이 가져가세요.
+                        </p>
+                        <p style="color: #546E7A; line-height: 1.8; font-size: 16px; margin-bottom: 15px;">
+                            이제 더 이상 Claude 4종 세트의 설치와 사용을 미루지 마세요.
+                        </p>
+                        <p style="color: #1976d2; line-height: 1.8; font-size: 18px; font-weight: 700;">
+                            Claude와 함께, 당신만의 AI 혁명을 시작하세요.
+                        </p>
                     </div>
 
                     <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
                         <h3 style="color: #2e7d32; margin-bottom: 15px;">🎁 구매자 특별 혜택</h3>
                         <ul style="color: #546E7A; line-height: 1.8; padding-left: 20px;">
                             <li>GitHub를 통해서 지속적 업데이트 버전 제공</li>
-                            <li>카카오톡 채널 "AI실전활용연구소"를 통한 챗봇 및 저자와의 소통</li>
+                            <li>카카오톡 채널 "Claude World"를 통한 챗봇 및 저자와의 소통</li>
                             <li>AI 활용 사업모델에 대한 무료 멘토링</li>
                         </ul>
                     </div>
@@ -88,7 +95,7 @@ export default async function handler(req, res) {
                     <div style="text-align: center; padding: 20px; border-top: 2px solid #e0e0e0;">
                         <p style="color: #7f8c8d; font-size: 14px; margin-bottom: 10px;">문의사항이 있으시면 언제든 연락주세요!</p>
                         <a href="http://pf.kakao.com/_WqSxcn/chat" style="display: inline-block; background: #FEE500; color: #3C1E1E; padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: 700; margin-top: 10px;">
-                            💬 카카오톡 채널 "AI실전활용연구소"로 문의하기
+                            💬 카카오톡 채널 "Claude World"로 문의하기
                         </a>
                         <p style="color: #999; font-size: 12px; margin-top: 15px;">
                             링크: <a href="http://pf.kakao.com/_WqSxcn/chat" style="color: #1976d2;">http://pf.kakao.com/_WqSxcn/chat</a>
@@ -146,7 +153,7 @@ export default async function handler(req, res) {
 
         return res.status(500).json({
             success: false,
-            error: '이메일 발송 중 오류가 발생했습니다. 카카오톡 채널 "AI실전활용연구소"로 문의해주세요.',
+            error: '이메일 발송 중 오류가 발생했습니다. 카카오톡 채널 "Claude World"로 문의해주세요.',
             kakaoLink: 'http://pf.kakao.com/_WqSxcn/chat'
         });
     }
