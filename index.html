@@ -1211,14 +1211,19 @@
         }
 
         function openKakaoPay() {
+            // 버튼 비활성화하여 중복 클릭 방지
+            const btn = event.target;
+            btn.disabled = true;
+            btn.style.opacity = '0.6';
+            btn.textContent = '✓ 카카오페이 송금 링크 열림';
+
             // 카카오페이 송금 링크를 새 탭으로 열기
             window.open('https://qr.kakaopay.com/Ej8qUBxLx', '_blank');
-            
-            // 카카오페이 송금 완료 후 이메일 입력 버튼 표시 및 단계 이동
+
+            // 3초 후 이메일 입력 버튼만 표시 (단계는 사용자가 클릭해야 이동)
             setTimeout(() => {
                 document.getElementById('emailStepBtn').style.display = 'block';
-                showEmailStep();
-            }, 3000); // 3초 후 이메일 입력 버튼 표시 및 단계 이동
+            }, 3000); // 3초 후 이메일 입력 버튼 표시
         }
 
         function copyBankAccount() {
