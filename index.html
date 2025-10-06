@@ -1211,10 +1211,32 @@
         }
 
         function openKakaoPay() {
-            // 버튼 비활성화하여 중복 클릭 방지
-            const btn = event.target;
+            // 인앱 브라우저 감지
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            const isInAppBrowser = /FBAN|FBAV|Instagram|Line/i.test(ua);
 
             const kakaoPayLink = 'https://qr.kakaopay.com/Ej8qUBxLx';
+
+            const btn = event.target;
+
+            if (isInAppBrowser) {
+                // 인앱 브라우저: 링크 복사 후 수동 안내
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(kakaoPayLink).then(() => {
+                        btn.disabled = true;
+                        btn.style.opacity = '0.6';
+                        btn.textContent = '✓ 링크 복사됨';
+
+                        alert('✅ 카카오페이 송금 링크가 복사되었습니다!\n\n📱 다음 단계:\n1. 카카오톡 앱을 열어주세요\n2. 아무 채팅방에나 붙여넣기\n3. 링크 클릭 → 5,000원 입력 → 송금\n4. 송금 완료 후 이 페이지로 돌아오세요');
+
+                        // 3초 후 이메일 버튼 표시
+                        setTimeout(() => {
+                            document.getElementById('emailStepBtn').style.display = 'block';
+                        }, 3000);
+                    });
+                }
+                return;
+            }
 
             // 링크 복사
             if (navigator.clipboard) {
