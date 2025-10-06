@@ -1058,7 +1058,7 @@
                     <p><strong>받는 사람:</strong> 선웅규</p>
                 </div>
                 <button class="btn btn-kakaopay" onclick="openKakaoPay()">
-                    📋 카카오페이 송금 링크 복사하기
+                    💰 카카오페이 송금하기
                 </button>
                 <button class="btn btn-primary" id="emailStepBtn" onclick="showEmailStep()" style="display: none;">
                     이메일 주소 입력하기
@@ -1210,62 +1210,48 @@
             });
         }
 
+        // 중복 실행 방지 플래그
+        let kakaoPayOpened = false;
+
         function openKakaoPay() {
-            // 인앱 브라우저 감지
-            const ua = navigator.userAgent || navigator.vendor || window.opera;
-            const isInAppBrowser = /FBAN|FBAV|Instagram|Line/i.test(ua);
-
-            const kakaoPayLink = 'https://qr.kakaopay.com/Ej8qUBxLx';
-
-            const btn = event.target;
-
-            if (isInAppBrowser) {
-                // 인앱 브라우저: 링크 복사 후 수동 안내
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(kakaoPayLink).then(() => {
-                        btn.disabled = true;
-                        btn.style.opacity = '0.6';
-                        btn.textContent = '✓ 링크 복사됨';
-
-                        alert('✅ 카카오페이 송금 링크가 복사되었습니다!\n\n📱 다음 단계:\n1. 카카오톡 앱을 열어주세요\n2. "선웅규" 채팅방에 붙여넣기\n3. 링크 클릭 → 5,000원 입력 → 송금\n4. 송금 완료 후 이 페이지로 돌아오세요');
-
-                        // 3초 후 이메일 버튼 표시
-                        setTimeout(() => {
-                            document.getElementById('emailStepBtn').style.display = 'block';
-                        }, 3000);
-                    });
-                }
+            // 중복 실행 방지
+            if (kakaoPayOpened) {
+                alert('이미 카카오페이 송금 링크를 열었습니다.\n송금 완료 후 이메일 입력 버튼을 클릭해주세요.');
                 return;
             }
 
-            // 링크 복사
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(kakaoPayLink).then(() => {
-                    btn.disabled = true;
-                    btn.style.opacity = '0.6';
-                    btn.textContent = '✓ 링크 복사됨';
+            const btn = event.target;
+            const kakaoPayLink = 'https://qr.kakaopay.com/Ej8qUBxLx';
 
-                    alert('✅ 카카오페이 송금 링크가 복사되었습니다!\n\n📱 다음 단계:\n1. 카카오톡 앱이 자동으로 열립니다\n2. "선웅규" 채팅방에 붙여넣기\n3. 링크 클릭 → 5,000원 입력 → 송금\n4. 송금 완료 후 이 페이지로 돌아오세요');
+            // 플래그 설정 및 버튼 비활성화
+            kakaoPayOpened = true;
+            btn.disabled = true;
+            btn.style.opacity = '0.6';
+            btn.textContent = '✓ 카카오페이 송금 링크 열림';
 
-                    // 카카오톡 앱 열기
-                    setTimeout(() => {
-                        window.location.href = 'kakaotalk://';
-                    }, 500);
+            // 모바일 감지
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-                    // 페이지 포커스 돌아오면 이메일 버튼 표시
-                    window.addEventListener('visibilitychange', function() {
-                        if (!document.hidden) {
-                            setTimeout(() => {
-                                document.getElementById('emailStepBtn').style.display = 'block';
-                            }, 500);
-                        }
-                    }, { once: true });
-                }).catch(() => {
-                    alert('링크 복사 실패\n\n수동으로 링크를 복사해주세요:\n' + kakaoPayLink);
-                });
+            if (isMobile) {
+                // 모바일: 같은 탭에서 카카오페이 열기
+                window.location.href = kakaoPayLink;
+
+                // 페이지 포커스 돌아오면 이메일 버튼 표시
+                window.addEventListener('visibilitychange', function() {
+                    if (!document.hidden) {
+                        setTimeout(() => {
+                            document.getElementById('emailStepBtn').style.display = 'block';
+                        }, 1000);
+                    }
+                }, { once: true });
             } else {
-                // 구형 브라우저 대응
-                alert('📋 카카오페이 송금 링크:\n\n' + kakaoPayLink + '\n\n위 링크를 복사해서 카카오톡에서 열어주세요.');
+                // PC: 새 탭으로 열기
+                window.open(kakaoPayLink, '_blank');
+
+                // 3초 후 이메일 버튼 표시
+                setTimeout(() => {
+                    document.getElementById('emailStepBtn').style.display = 'block';
+                }, 3000);
             }
         }
 
