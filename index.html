@@ -1215,15 +1215,32 @@
             const btn = event.target;
             btn.disabled = true;
             btn.style.opacity = '0.6';
-            btn.textContent = '✓ 카카오페이 송금 링크 열림';
+            btn.textContent = '✓ 카카오페이 실행됨';
 
-            // 카카오페이 송금 링크를 새 탭으로 열기
-            window.open('https://qr.kakaopay.com/Ej8qUBxLx', '_blank');
+            // 모바일 감지
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-            // 3초 후 이메일 입력 버튼만 표시 (단계는 사용자가 클릭해야 이동)
-            setTimeout(() => {
-                document.getElementById('emailStepBtn').style.display = 'block';
-            }, 3000); // 3초 후 이메일 입력 버튼 표시
+            if (isMobile) {
+                // 모바일: 같은 탭에서 카카오페이 실행 (앱으로 자동 전환)
+                window.location.href = 'https://qr.kakaopay.com/Ej8qUBxLx';
+
+                // 페이지 포커스 돌아오면 이메일 버튼 표시
+                window.addEventListener('visibilitychange', function() {
+                    if (!document.hidden) {
+                        setTimeout(() => {
+                            document.getElementById('emailStepBtn').style.display = 'block';
+                        }, 1000);
+                    }
+                }, { once: true });
+            } else {
+                // PC: 새 탭으로 열기
+                window.open('https://qr.kakaopay.com/Ej8qUBxLx', '_blank');
+
+                // 3초 후 이메일 버튼 표시
+                setTimeout(() => {
+                    document.getElementById('emailStepBtn').style.display = 'block';
+                }, 3000);
+            }
         }
 
         function copyBankAccount() {
