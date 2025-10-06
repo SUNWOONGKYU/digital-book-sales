@@ -1229,30 +1229,13 @@
             btn.style.opacity = '0.6';
             btn.textContent = '✓ 카카오페이 송금 링크 열림';
 
-            // 모바일 감지
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            // 새 창/탭으로 열기 (페이지 이동 방지)
+            window.open(kakaoPayLink, '_blank');
 
-            if (isMobile) {
-                // 모바일: 같은 탭에서 카카오페이 열기
-                window.location.href = kakaoPayLink;
-
-                // 페이지 포커스 돌아오면 이메일 버튼 표시
-                window.addEventListener('visibilitychange', function() {
-                    if (!document.hidden) {
-                        setTimeout(() => {
-                            document.getElementById('emailStepBtn').style.display = 'block';
-                        }, 1000);
-                    }
-                }, { once: true });
-            } else {
-                // PC: 새 탭으로 열기
-                window.open(kakaoPayLink, '_blank');
-
-                // 3초 후 이메일 버튼 표시
-                setTimeout(() => {
-                    document.getElementById('emailStepBtn').style.display = 'block';
-                }, 3000);
-            }
+            // 즉시 이메일 버튼 표시 (3초 후)
+            setTimeout(() => {
+                document.getElementById('emailStepBtn').style.display = 'block';
+            }, 3000);
         }
 
         function copyBankAccount() {
