@@ -1065,9 +1065,28 @@
                         아래 버튼으로 송금 완료 후에 "페이지 이동 중" 메시지가 나타나면 왼쪽 위에 보이는 X 버튼을 눌러 창을 닫고, 이 페이지로 돌아와서 이메일 주소를 입력하세요.
                     </p>
                 </div>
-                <button class="btn btn-kakaopay" onclick="openKakaoPay()">
-                    💰 카카오페이 송금하기
-                </button>
+                <!-- 모바일: 버튼 표시 -->
+                <div id="kakaopay-mobile" style="display: none;">
+                    <button class="btn btn-kakaopay" onclick="openKakaoPay()">
+                        💰 카카오페이 송금하기
+                    </button>
+                </div>
+
+                <!-- PC: QR 코드 표시 -->
+                <div id="kakaopay-pc" style="display: none; text-align: center;">
+                    <div style="background: #FFF9E6; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <p style="font-weight: 700; font-size: 16px; color: #2C3E50; margin-bottom: 15px;">
+                            📱 스마트폰으로 아래 QR 코드를 스캔하세요
+                        </p>
+                        <img src="kakaopay-qr-5000.jpg" alt="카카오페이 송금 QR 코드" style="max-width: 300px; width: 100%; border: 2px solid #FEE500; border-radius: 10px; margin-bottom: 15px;">
+                        <p style="color: #7f8c8d; font-size: 14px;">
+                            💡 카카오톡 또는 카카오페이 앱에서 QR 스캔 후 송금해주세요
+                        </p>
+                    </div>
+                    <button class="btn btn-primary" onclick="markKakaoPayCompleted()">
+                        ✓ 송금 완료했습니다
+                    </button>
+                </div>
                 <button class="btn btn-primary" id="emailStepBtn" onclick="showEmailStep()" style="display: none;">
                     이메일 주소 입력하기
                 </button>
@@ -1194,6 +1213,15 @@
         function selectKakaoPay() {
             hideAllSteps();
             document.getElementById('step2-kakaopay').classList.add('active');
+
+            // 기기에 따라 카카오페이 UI 표시
+            if (isMobileDevice()) {
+                document.getElementById('kakaopay-mobile').style.display = 'block';
+                document.getElementById('kakaopay-pc').style.display = 'none';
+            } else {
+                document.getElementById('kakaopay-mobile').style.display = 'none';
+                document.getElementById('kakaopay-pc').style.display = 'block';
+            }
         }
 
         function selectBankTransfer() {
@@ -1221,6 +1249,11 @@
         // 중복 실행 방지 플래그
         let kakaoPayOpened = false;
 
+        // 모바일 기기 감지
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+        }
+
         function openKakaoPay() {
             // 중복 실행 방지
             if (kakaoPayOpened) {
@@ -1244,6 +1277,22 @@
             setTimeout(() => {
                 document.getElementById('emailStepBtn').style.display = 'block';
             }, 3000);
+        }
+
+        // PC 사용자가 QR 송금 완료 버튼 클릭
+        function markKakaoPayCompleted() {
+            if (kakaoPayOpened) {
+                return;
+            }
+
+            kakaoPayOpened = true;
+            const btn = event.target;
+            btn.disabled = true;
+            btn.style.opacity = '0.6';
+            btn.textContent = '✓ 송금 확인됨';
+
+            // 이메일 버튼 표시
+            document.getElementById('emailStepBtn').style.display = 'block';
         }
 
         function copyBankAccount() {
