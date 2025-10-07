@@ -86,12 +86,16 @@ export default async function handler(req, res) {
         const dailyStats = {};
 
         data.forEach(row => {
-            const sentAt = new Date(row[3]);
-            const hour = sentAt.getHours();
-            hourlyStats[hour]++;
+            if (row[3]) {
+                const sentAt = new Date(row[3]);
+                const hour = sentAt.getHours();
+                if (!isNaN(hour)) {
+                    hourlyStats[hour]++;
+                }
 
-            const date = row[3].split('T')[0];
-            dailyStats[date] = (dailyStats[date] || 0) + 1;
+                const date = row[3].split('T')[0];
+                dailyStats[date] = (dailyStats[date] || 0) + 1;
+            }
         });
 
         const peakHour = hourlyStats.indexOf(Math.max(...hourlyStats));
