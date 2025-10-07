@@ -1025,7 +1025,7 @@
     <!-- 구매 섹션 -->
     <section class="purchase fade-in" id="purchase">
         <div class="purchase-box">
-            <h3 style="text-align: center; font-size: 156%; margin-bottom: 25px;">🎯 지금 바로 구매하기!</h3>
+            <h3 id="purchase-title" style="text-align: center; font-size: 156%; margin-bottom: 25px;">🎯 지금 바로 구매하기!</h3>
 
             <!-- Step 1: 결제 방법 선택 -->
             <div id="step1" class="step active">
@@ -1208,6 +1208,8 @@
         function showStep1() {
             hideAllSteps();
             document.getElementById('step1').classList.add('active');
+            // 구매하기 제목 다시 표시
+            document.getElementById('purchase-title').style.display = 'block';
         }
 
         function selectKakaoPay() {
@@ -1238,6 +1240,8 @@
             hideAllSteps();
             document.getElementById('step3').classList.add('active');
             document.getElementById('email').focus();
+            // 구매하기 제목 숨기기
+            document.getElementById('purchase-title').style.display = 'none';
         }
 
         function hideAllSteps() {
