@@ -327,13 +327,14 @@ export async function getDailyStats(date) {
 
 /**
  * 이메일 발송 로그 저장
- * EmailLogs 시트 컬럼: email, name, sentAt, success, errorMessage
+ * EmailLogs 시트 컬럼: paymentMethod, email, name, sentAt, success, errorMessage
  */
 export async function saveEmailLog(emailData) {
     const sheets = await getSheetsClient();
     const spreadsheetId = process.env.SPREADSHEET_ID;
 
     const values = [[
+        emailData.paymentMethod || '',
         emailData.email,
         emailData.name || '',
         new Date().toISOString(),
@@ -344,7 +345,7 @@ export async function saveEmailLog(emailData) {
     try {
         await sheets.spreadsheets.values.append({
             spreadsheetId,
-            range: 'EmailLogs!A:E',
+            range: 'EmailLogs!A:F',
             valueInputOption: 'USER_ENTERED',
             resource: { values }
         });
@@ -403,10 +404,10 @@ export async function initializeSpreadsheet() {
         // EmailLogs 시트 헤더
         await sheets.spreadsheets.values.update({
             spreadsheetId,
-            range: 'EmailLogs!A1:E1',
+            range: 'EmailLogs!A1:F1',
             valueInputOption: 'USER_ENTERED',
             resource: {
-                values: [['email', 'name', 'sentAt', 'success', 'errorMessage']]
+                values: [['paymentMethod', 'email', 'name', 'sentAt', 'success', 'errorMessage']]
             }
         });
 

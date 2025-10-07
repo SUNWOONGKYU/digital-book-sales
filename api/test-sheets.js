@@ -9,6 +9,7 @@ export default async function handler(req, res) {
     try {
         // 테스트 데이터 저장
         const result = await saveEmailLog({
+            paymentMethod: '카카오페이',
             email: 'test@example.com',
             name: '테스트',
             success: true,

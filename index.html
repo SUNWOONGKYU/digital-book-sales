@@ -1205,6 +1205,9 @@
     </section>
 
     <script>
+        // 선택된 결제 방법 추적
+        let selectedPaymentMethod = '';
+
         function showStep1() {
             hideAllSteps();
             document.getElementById('step1').classList.add('active');
@@ -1213,6 +1216,7 @@
         }
 
         function selectKakaoPay() {
+            selectedPaymentMethod = '카카오페이';
             hideAllSteps();
             document.getElementById('step2-kakaopay').classList.add('active');
 
@@ -1227,11 +1231,13 @@
         }
 
         function selectBankTransfer() {
+            selectedPaymentMethod = '계좌이체';
             hideAllSteps();
             document.getElementById('step2-bank').classList.add('active');
         }
 
         function selectCreditCard() {
+            selectedPaymentMethod = '신용카드';
             hideAllSteps();
             document.getElementById('step2-credit').classList.add('active');
         }
@@ -1347,7 +1353,8 @@
                     },
                     body: JSON.stringify({
                         email: email,
-                        name: name || '고객님'
+                        name: name || '고객님',
+                        paymentMethod: selectedPaymentMethod
                     })
                 });
 

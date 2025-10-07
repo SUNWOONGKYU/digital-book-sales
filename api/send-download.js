@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: '허용되지 않은 메서드입니다.' });
     }
 
-    const { email, name } = req.body;
+    const { email, name, paymentMethod } = req.body;
 
     // 이메일 검증
     if (!email || !email.includes('@')) {
@@ -120,6 +120,7 @@ export default async function handler(req, res) {
         // Google Sheets에 성공 로그 저장 (실패해도 무시)
         try {
             await saveEmailLog({
+                paymentMethod: paymentMethod,
                 email: email,
                 name: name,
                 success: true
@@ -146,6 +147,7 @@ export default async function handler(req, res) {
         // Google Sheets에 실패 로그 저장 (실패해도 무시)
         try {
             await saveEmailLog({
+                paymentMethod: paymentMethod,
                 email: email,
                 name: name,
                 success: false,
