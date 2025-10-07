@@ -1286,13 +1286,9 @@
             }
 
             kakaoPayOpened = true;
-            const btn = event.target;
-            btn.disabled = true;
-            btn.style.opacity = '0.6';
-            btn.textContent = '✓ 송금 확인됨';
 
-            // 이메일 버튼 표시
-            document.getElementById('emailStepBtn').style.display = 'block';
+            // 바로 이메일 입력 화면으로 이동
+            showEmailStep();
         }
 
         function copyBankAccount() {
