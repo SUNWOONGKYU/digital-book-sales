@@ -50,8 +50,8 @@ export default async function handler(req, res) {
             });
         }
 
-        // 헤더 제외
-        const data = rows.slice(1);
+        // 헤더 제외하고 유효한 데이터만 필터링 (sentAt이 있는 것만)
+        const data = rows.slice(1).filter(row => row[3] && row[3].trim() !== '');
 
         // === 1. 전체 요약 통계 ===
         const totalSales = data.length;
