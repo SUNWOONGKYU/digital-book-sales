@@ -1276,13 +1276,10 @@
             // 플래그 설정
             kakaoPayOpened = true;
 
-            // 카카오페이 앱 직접 실행
-            window.location.href = kakaoPayLink;
-
             // 버튼 텍스트 변경 및 스타일 업데이트
             btn.disabled = true;
             btn.style.opacity = '0.5';
-            btn.textContent = '✓ 카카오페이 앱 실행됨';
+            btn.textContent = '✓ 카카오페이 앱으로 이동 중...';
 
             // 돌아가기 안내 메시지 추가
             const infoBox = document.createElement('div');
@@ -1302,6 +1299,9 @@
 
             // 버튼 바로 아래에 추가
             btn.parentNode.appendChild(confirmBtn);
+
+            // 새 창으로 카카오페이 열기 (현재 페이지 유지)
+            window.open(kakaoPayLink, '_blank');
         }
 
         // PC 사용자가 QR 송금 완료 버튼 클릭
