@@ -1067,7 +1067,7 @@
                 <div style="background: #FFF3E0; padding: 15px; border-radius: 10px; border-left: 4px solid #FFA726; margin: 20px 0;">
                     <p style="margin: 0; color: #2C3E50; font-size: 14px; line-height: 1.6;">
                         ⚠️ <strong>안내사항</strong><br>
-                        버튼 클릭 후 카카오페이 앱이 자동으로 열립니다. 송금 완료 후 이 페이지로 돌아오시면 자동으로 이메일 입력 화면이 표시됩니다.
+                        버튼 클릭 후 카카오페이 앱이 자동으로 열립니다.
                     </p>
                 </div>
                 <!-- 모바일: 버튼 표시 -->
@@ -1289,6 +1289,12 @@
             btn.disabled = true;
             btn.style.opacity = '0.5';
             btn.textContent = '✓ 카카오페이 앱 실행됨';
+
+            // 돌아가기 안내 메시지 추가
+            const infoBox = document.createElement('div');
+            infoBox.style.cssText = 'background: #FFF3E0; padding: 15px; border-radius: 10px; border-left: 4px solid #FF6B00; margin: 20px 0;';
+            infoBox.innerHTML = '<p style="margin: 0; color: #2C3E50; font-size: 14px; line-height: 1.6;">⚠️ <strong>송금 완료 후 "돌아가기" 버튼을 눌러 이 페이지로 돌아오세요</strong></p>';
+            btn.parentNode.appendChild(infoBox);
 
             // 송금 완료 확인 버튼 표시
             const confirmBtn = document.createElement('button');
