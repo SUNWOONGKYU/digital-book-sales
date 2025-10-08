@@ -1264,49 +1264,34 @@
         }
 
         function openKakaoPay() {
-            // 중복 실행 방지
-            if (kakaoPayOpened) {
-                alert('이미 카카오페이 송금 링크를 열었습니다.\n송금 완료 후 아래 버튼을 클릭해주세요.');
-                return;
-            }
-
+            const btn = event.target;
             const kakaoPayLink = 'https://qr.kakaopay.com/Ej8qUBxLx9c407971';
 
-            // 플래그 설정
+            // 버튼을 송금 완료 버튼으로 변경
+            btn.textContent = '송금 완료했습니다';
+            btn.style.background = 'linear-gradient(135deg, #27AE60 0%, #229954 100%)';
+            btn.onclick = function() {
+                showEmailStep();
+            };
+
+            // 안내 메시지 추가
+            const infoBox = document.createElement('div');
+            infoBox.style.cssText = 'background: #FFF3E0; padding: 15px; border-radius: 10px; border-left: 4px solid #FF6B00; margin: 20px 0;';
+            infoBox.innerHTML = '<p style="margin: 0; color: #2C3E50; font-size: 14px; line-height: 1.6;">⚠️ <strong>카카오페이 앱에서 송금을 완료한 후, 위 버튼을 클릭하세요</strong></p>';
+            btn.parentNode.appendChild(infoBox);
+
+            // 카카오페이 앱 실행 (링크 직접 열기)
+            // a 태그를 사용하여 새 탭에서 열기 시도
+            const link = document.createElement('a');
+            link.href = kakaoPayLink;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
             kakaoPayOpened = true;
-
-            // 페이지 상태를 localStorage에 저장
-            localStorage.setItem('kakaoPayInProgress', 'true');
-            localStorage.setItem('returnFromKakaoPay', 'true');
-
-            // 카카오페이로 이동
-            window.location.href = kakaoPayLink;
         }
-
-        // 페이지 로드 시 카카오페이에서 돌아왔는지 확인
-        window.addEventListener('load', function() {
-            if (localStorage.getItem('returnFromKakaoPay') === 'true') {
-                // 플래그 제거
-                localStorage.removeItem('returnFromKakaoPay');
-                localStorage.removeItem('kakaoPayInProgress');
-
-                // 바로 이메일 입력 화면으로 이동
-                selectedPaymentMethod = '카카오페이';
-                hideAllSteps();
-                document.getElementById('step3').classList.add('active');
-                document.getElementById('email').focus();
-                document.getElementById('purchase-title').style.display = 'none';
-
-                kakaoPayOpened = true;
-
-                // 성공 메시지 표시
-                const emailStep = document.getElementById('step3');
-                const successMsg = document.createElement('div');
-                successMsg.style.cssText = 'background: #E8F5E9; padding: 15px; border-radius: 10px; border-left: 4px solid #27AE60; margin-bottom: 20px;';
-                successMsg.innerHTML = '<p style="margin: 0; color: #2C3E50; font-size: 14px; line-height: 1.6;">✅ <strong>카카오페이 송금이 완료되었습니다!</strong><br>PDF 파일을 받을 이메일 주소를 입력해주세요.</p>';
-                emailStep.insertBefore(successMsg, emailStep.firstChild);
-            }
-        });
 
         // PC 사용자가 QR 송금 완료 버튼 클릭
         function markKakaoPayCompleted() {
