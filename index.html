@@ -1282,17 +1282,8 @@
             // 플래그 설정
             kakaoPayOpened = true;
 
-            // 카카오페이 앱 실행 (앱만 실행하고 웹페이지는 유지)
-            // iframe을 사용하여 리다이렉트 방지
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.src = kakaoPayLink;
-            document.body.appendChild(iframe);
-
-            // iframe 제거 (앱 실행 후)
-            setTimeout(() => {
-                document.body.removeChild(iframe);
-            }, 2000);
+            // 카카오페이 앱 직접 실행
+            window.location.href = kakaoPayLink;
 
             // 버튼 텍스트 변경 및 스타일 업데이트
             btn.disabled = true;
