@@ -1267,8 +1267,13 @@
             const btn = event.target;
             const kakaoPayLink = 'https://qr.kakaopay.com/Ej8qUBxLx9c407971';
 
-            // 버튼 숨기기
-            btn.style.display = 'none';
+            // 버튼을 "카카오페이 앱 열기"로 변경
+            btn.textContent = '💰 카카오페이 앱 열기';
+            btn.style.background = 'linear-gradient(135deg, #FEE500 0%, #FFEB3B 100%)';
+            btn.style.color = '#000';
+            btn.onclick = function() {
+                openKakaoPayApp(kakaoPayLink, btn);
+            };
 
             // 안내 메시지 추가
             const infoBox = document.createElement('div');
@@ -1276,9 +1281,10 @@
             infoBox.innerHTML = `
                 <p style="margin: 0; color: #2C3E50; font-size: 14px; line-height: 1.8;">
                     ⚠️ <strong>안내:</strong><br>
-                    1️⃣ 카카오페이 앱에서 송금 완료<br>
-                    2️⃣ 왼쪽 위 <strong style="color: #FF6B00;">✕ 닫기</strong> 버튼 클릭<br>
-                    3️⃣ 이 페이지로 돌아와서 아래 <strong style="color: #27AE60;">"송금 완료"</strong> 버튼 클릭
+                    1️⃣ 위 버튼을 눌러 카카오페이 앱 실행<br>
+                    2️⃣ 카카오페이 앱에서 송금 완료<br>
+                    3️⃣ 왼쪽 위 <strong style="color: #FF6B00;">✕ 닫기</strong> 버튼 클릭<br>
+                    4️⃣ 이 페이지로 돌아와서 <strong style="color: #27AE60;">"송금 완료"</strong> 버튼 클릭
                 </p>
             `;
             btn.parentNode.appendChild(infoBox);
@@ -1287,25 +1293,29 @@
             const confirmBtn = document.createElement('button');
             confirmBtn.className = 'btn';
             confirmBtn.textContent = '송금 완료';
-            confirmBtn.style.cssText = 'background: linear-gradient(135deg, #27AE60 0%, #229954 100%); color: white; width: 100%;';
+            confirmBtn.style.cssText = 'background: linear-gradient(135deg, #27AE60 0%, #229954 100%); color: white; width: 100%; margin-top: 15px;';
             confirmBtn.onclick = function() {
                 showEmailStep();
             };
             btn.parentNode.appendChild(confirmBtn);
 
-            // 사용자가 안내문구를 읽을 시간을 준 후 카카오페이 앱 실행
-            setTimeout(function() {
-                // 카카오페이 앱 실행 (링크 직접 열기)
-                const link = document.createElement('a');
-                link.href = kakaoPayLink;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }, 2000);
-
             kakaoPayOpened = true;
+        }
+
+        function openKakaoPayApp(kakaoPayLink, btn) {
+            // 카카오페이 앱 실행
+            const link = document.createElement('a');
+            link.href = kakaoPayLink;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // 버튼 비활성화
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+            btn.textContent = '✓ 카카오페이 앱 실행됨';
         }
 
         // PC 사용자가 QR 송금 완료 버튼 클릭
