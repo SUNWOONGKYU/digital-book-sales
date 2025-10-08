@@ -1272,18 +1272,15 @@
         function openKakaoPay() {
             // 중복 실행 방지
             if (kakaoPayOpened) {
-                alert('이미 카카오페이 송금 링크를 열었습니다.\n송금 완료 후 이메일 입력 버튼을 클릭해주세요.');
+                alert('이미 카카오페이 송금 링크를 열었습니다.\n송금 완료 후 아래 버튼을 클릭해주세요.');
                 return;
             }
 
             const btn = event.target;
             const kakaoPayLink = 'https://qr.kakaopay.com/Ej8qUBxLx9c407971';
 
-            // 플래그 설정 및 버튼 비활성화
+            // 플래그 설정
             kakaoPayOpened = true;
-            btn.disabled = true;
-            btn.style.opacity = '0.6';
-            btn.textContent = '✓ 카카오페이 송금 완료';
 
             // 카카오페이 앱 실행 (앱만 실행하고 웹페이지는 유지)
             // iframe을 사용하여 리다이렉트 방지
@@ -1297,10 +1294,23 @@
                 document.body.removeChild(iframe);
             }, 2000);
 
-            // 즉시 이메일 입력 단계로 이동
-            setTimeout(() => {
+            // 버튼 텍스트 변경 및 스타일 업데이트
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+            btn.textContent = '✓ 카카오페이 앱 실행됨';
+
+            // 송금 완료 확인 버튼 표시
+            const confirmBtn = document.createElement('button');
+            confirmBtn.className = 'btn btn-success';
+            confirmBtn.innerHTML = '💰 송금 완료했습니다 → 이메일 입력하기';
+            confirmBtn.style.marginTop = '15px';
+            confirmBtn.style.background = 'linear-gradient(135deg, #27AE60 0%, #229954 100%)';
+            confirmBtn.onclick = function() {
                 showEmailStep();
-            }, 1500);
+            };
+
+            // 버튼 바로 아래에 추가
+            btn.parentNode.appendChild(confirmBtn);
         }
 
         // PC 사용자가 QR 송금 완료 버튼 클릭
