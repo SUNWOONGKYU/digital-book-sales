@@ -1293,7 +1293,7 @@
             };
             btn.parentNode.appendChild(confirmBtn);
 
-            // 약간의 지연 후 카카오페이 앱 실행
+            // 사용자가 안내문구를 읽을 시간을 준 후 카카오페이 앱 실행
             setTimeout(function() {
                 // 카카오페이 앱 실행 (링크 직접 열기)
                 const link = document.createElement('a');
@@ -1303,7 +1303,7 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-            }, 300);
+            }, 2000);
 
             kakaoPayOpened = true;
         }
