@@ -1067,7 +1067,7 @@
                 <div style="background: #FFF3E0; padding: 15px; border-radius: 10px; border-left: 4px solid #FFA726; margin: 20px 0;">
                     <p style="margin: 0; color: #2C3E50; font-size: 14px; line-height: 1.6;">
                         ⚠️ <strong>안내사항</strong><br>
-                        송금 완료 후에 "페이지 이동 중" 메시지가 나타나면 왼쪽 위에 보이는 X 버튼을 눌러 창을 닫고, 이 페이지로 돌아와서 이메일 주소를 입력하세요.
+                        버튼 클릭 후 카카오페이 앱이 자동으로 열립니다. 송금 완료 후 이 페이지로 돌아오시면 자동으로 이메일 입력 화면이 표시됩니다.
                     </p>
                 </div>
                 <!-- 모바일: 버튼 표시 -->
@@ -1283,15 +1283,24 @@
             kakaoPayOpened = true;
             btn.disabled = true;
             btn.style.opacity = '0.6';
-            btn.textContent = '✓ 카카오페이 송금 링크 열림';
+            btn.textContent = '✓ 카카오페이 송금 완료';
 
-            // 새 창/탭으로 열기 (페이지 이동 방지)
-            window.open(kakaoPayLink, '_blank');
+            // 카카오페이 앱 실행 (앱만 실행하고 웹페이지는 유지)
+            // iframe을 사용하여 리다이렉트 방지
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = kakaoPayLink;
+            document.body.appendChild(iframe);
 
-            // 즉시 이메일 버튼 표시 (3초 후)
+            // iframe 제거 (앱 실행 후)
             setTimeout(() => {
-                document.getElementById('emailStepBtn').style.display = 'block';
-            }, 3000);
+                document.body.removeChild(iframe);
+            }, 2000);
+
+            // 즉시 이메일 입력 단계로 이동
+            setTimeout(() => {
+                showEmailStep();
+            }, 1500);
         }
 
         // PC 사용자가 QR 송금 완료 버튼 클릭
