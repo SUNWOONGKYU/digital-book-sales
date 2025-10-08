@@ -1273,7 +1273,15 @@
             // 안내 메시지 추가
             const infoBox = document.createElement('div');
             infoBox.style.cssText = 'background: #FFF3E0; padding: 15px; border-radius: 10px; border-left: 4px solid #FF6B00; margin: 20px 0;';
-            infoBox.innerHTML = '<p style="margin: 0; color: #2C3E50; font-size: 14px; line-height: 1.6;">⚠️ <strong>카카오페이 앱에서 송금을 완료한 후, 아래 버튼을 클릭하세요</strong></p>';
+            infoBox.innerHTML = `
+                <p style="margin: 0; color: #2C3E50; font-size: 14px; line-height: 1.8;">
+                    ⚠️ <strong>송금 완료 후 돌아오는 방법:</strong><br>
+                    1️⃣ 카카오페이 앱에서 송금 완료<br>
+                    2️⃣ 화면 왼쪽 상단 <strong style="color: #FF6B00;">"&lt; 닫기"</strong> 또는 <strong style="color: #FF6B00;">"완료"</strong> 버튼 클릭<br>
+                    3️⃣ 이 페이지로 자동으로 돌아옴<br>
+                    4️⃣ 아래 <strong>"송금 완료"</strong> 버튼 클릭
+                </p>
+            `;
             btn.parentNode.appendChild(infoBox);
 
             // 송금 완료 버튼 추가
