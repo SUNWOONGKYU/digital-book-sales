@@ -1264,7 +1264,7 @@
 
         function openKakaoPay() {
             const btn = event.target;
-            const kakaoPayLink = 'https://qr.kakaopay.com/Ej8qUBxLx9c407971';
+            const kakaoPayLink = 'https://qr.kakaopay.com/Ej8qUBxLx138303594';
 
             // 버튼을 "카카오페이 앱 열기"로 변경
             btn.textContent = '💰 카카오페이 앱 열기';
@@ -1423,7 +1423,7 @@
 
             if (diff <= 0) {
                 // 할인 종료 - 정가로 전환
-                document.getElementById('price-title').innerHTML = '📘 Claude 완벽 가이드';
+                document.getElementById('price-title').style.display = 'none';
                 document.getElementById('original-price').style.display = 'none';
                 document.getElementById('current-price').innerHTML = '₩9,990';
                 document.getElementById('current-price').style.color = '#2C3E50';
