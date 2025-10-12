@@ -672,12 +672,12 @@
     <!-- 가격 및 할인 행사 -->
     <section class="price-section fade-in">
         <div class="container">
-            <h2 style="font-size: 29px; color: #2C3E50; margin-bottom: 40px;">🌕 추석 연휴 얼리버드 특별 할인</h2>
+            <h2 id="price-title" style="font-size: 29px; color: #2C3E50; margin-bottom: 40px;">🌕 추석 연휴 얼리버드 특별 할인</h2>
             <div class="price-box">
                 <div style="font-size: 24px; color: #2C3E50; margin-bottom: 10px;">정가</div>
-                <div style="font-size: 32px; color: #95a5a6; text-decoration: line-through; margin-bottom: 20px;">₩9,990</div>
-                <div class="sale-price" style="color: #D97757;">₩5,000</div>
-                <p style="color: #546E7A; font-size: 16px; margin-bottom: 15px;">
+                <div id="original-price" style="font-size: 32px; color: #95a5a6; text-decoration: line-through; margin-bottom: 20px;">₩9,990</div>
+                <div id="current-price" class="sale-price" style="color: #D97757;">₩5,000</div>
+                <p id="sale-period" style="color: #546E7A; font-size: 16px; margin-bottom: 15px;">
                     ⏰ 10월 12일까지만 특별가!
                 </p>
                 <div id="countdown" style="background: #FFF3E0; padding: 15px; border-radius: 10px; margin-top: 20px;">
@@ -1197,7 +1197,7 @@
     <section style="background: linear-gradient(135deg, #27AE60 0%, #229954 100%); padding: 30px 20px; text-align: center;">
         <div style="max-width: 800px; margin: 0 auto;">
             <p style="color: white; font-size: 127.5%; margin-bottom: 15px;">지금 시작하는 사람과<br>5개월 후 시작하는 사람의 격차는<br>단순히 5개월이 아닙니다.</p>
-            <p style="color: #BDC3C7; font-size: 16px;">
+            <p id="bottom-sale-notice" style="color: #BDC3C7; font-size: 16px;">
                 🌕 추석 연휴 얼리버드 특별 할인 10월 12일 23:59 종료
             </p>
         </div>
@@ -1416,14 +1416,21 @@
             }
         }
 
-        // 카운트다운 타이머
+        // 카운트다운 타이머 및 가격 전환
         function updateCountdown() {
             const endDate = new Date('2025-10-12T23:59:59+09:00'); // 10월 12일 23:59:59 KST
             const now = new Date();
             const diff = endDate - now;
 
             if (diff <= 0) {
-                document.getElementById('timer').innerHTML = '할인 종료';
+                // 할인 종료 - 정가로 전환
+                document.getElementById('price-title').innerHTML = '📘 Claude 완벽 가이드';
+                document.getElementById('original-price').style.display = 'none';
+                document.getElementById('current-price').innerHTML = '₩9,990';
+                document.getElementById('current-price').style.color = '#2C3E50';
+                document.getElementById('sale-period').style.display = 'none';
+                document.getElementById('countdown').style.display = 'none';
+                document.getElementById('bottom-sale-notice').innerHTML = '📚 지금 바로 시작하세요';
                 return;
             }
 
